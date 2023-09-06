@@ -10,10 +10,20 @@ config_version=5
 
 [application]
 
-config/name="Blobs With Guns Remastered"
+config/name="Blobs With Guns: Remastered"
+run/main_scene="res://scenes/levels/world.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.113725, 0.611765, 0.941176, 1)
+boot_splash/image="res://sprites/logos/gutter_cat_spaced.png"
+boot_splash/use_filter=false
+config/icon="res://sprites/blobs/Blobs_guns_thumbnail.png"
+
+[display]
+
+window/size/mode=3
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.113725, 0.611765, 0.941176, 1)

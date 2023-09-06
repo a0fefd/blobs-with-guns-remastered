@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://n1eghj4te88a"]
+
+[ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="1_b0041"]
+
+[node name="Gun" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b0041")
+hframes = 3
+vframes = 3
+
+[node name="BarrelEnd" type="Node2D" parent="Sprite2D"]
+position = Vector2(5, -2)
+
+[node name="ShellPos" type="Node2D" parent="Sprite2D"]
+position = Vector2(-1, -3)

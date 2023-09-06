@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhp7pmx1h136u"]
+
+[ext_resource type="Texture2D" uid="uid://dstj6cpmsn0q" path="res://sprites/blobs/blobs.png" id="1_q5knr"]
+
+[node name="Blob" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q5knr")
+vframes = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, -8, -7, 0, -9, 4, -9, 7, -8, 8, 8, 8, 9, 7, 9, 5, 8, -1, 7, -4, 4, -8)
+
+[node name="GunPos" type="Node2D" parent="."]
+position = Vector2(10, 0)
