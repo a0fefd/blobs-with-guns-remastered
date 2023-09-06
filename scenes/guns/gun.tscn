@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://n1eghj4te88a"]
+[gd_scene load_steps=8 format=3 uid="uid://n1eghj4te88a"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_8yt1r"]
 [ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="1_b0041"]
+[ext_resource type="Texture2D" uid="uid://da7xk67axn8fd" path="res://sprites/guns/muzzle flashes.png" id="3_6ukkm"]
 [ext_resource type="AudioStream" uid="uid://eywgm3nylp6r" path="res://sounds/shoot_sound.wav" id="3_ilwih"]
 
 [sub_resource type="Animation" id="Animation_3qays"]
@@ -46,6 +47,18 @@ tracks/2/keys = {
 "method": &"play"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BarrelEnd/Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_3mqgm"]
 length = 0.001
@@ -73,6 +86,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BarrelEnd/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xhcu1"]
 _data = {
@@ -90,6 +115,11 @@ vframes = 3
 
 [node name="BarrelEnd" type="Node2D" parent="Sprite2D"]
 position = Vector2(5, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/BarrelEnd"]
+visible = false
+position = Vector2(6, 0)
+texture = ExtResource("3_6ukkm")
 
 [node name="ShellPos" type="Node2D" parent="Sprite2D"]
 position = Vector2(-1, -3)
