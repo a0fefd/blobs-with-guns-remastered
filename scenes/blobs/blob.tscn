@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dstj6cpmsn0q" path="res://sprites/blobs/blobs.png" id="1_q5knr"]
 
 [node name="Blob" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_q5knr")
