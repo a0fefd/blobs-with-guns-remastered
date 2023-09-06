@@ -12,6 +12,7 @@ func add_gun(gun_to_add):
 	$GunPos.add_child(gun_inst)
 	gun_inst.hide()
 	gun_inst.fired.connect(get_recoiled)
+	gun_inst.world = get_parent()
 
 
 func get_recoiled(recoil_vector):
