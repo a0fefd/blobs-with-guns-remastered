@@ -16,7 +16,7 @@ func add_gun(gun_to_add):
 
 func get_recoiled(recoil_vector):
 	#apply_impulse(recoil_vector, $GunPos.position)
-	apply_central_impulse(recoil_vector)
+	apply_central_impulse(recoil_vector.rotated(rotation))
 
 
 func _ready():
