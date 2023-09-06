@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scripts/shell.gd" id="1_todmc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2hjhl"]
-radius = 1.5
-height = 8.0
+radius = 0.8
+height = 4.0
 
 [node name="Shell" type="RigidBody2D"]
 collision_layer = 2
@@ -13,6 +13,7 @@ collision_mask = 2
 script = ExtResource("1_todmc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_q4lfi")
 vframes = 8
 frame = 5
