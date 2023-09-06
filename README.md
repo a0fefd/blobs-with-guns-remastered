@@ -1,4 +1,4 @@
-# Blobs with Guns Remastered
+# Blobs with Guns: Remastered
 
 [Blobs with Guns](https://github.com/GutterCat42/blobs-with-guns-archive) is a game I made once in Godot 3. It was a cool idea and a horrible execution because my code was disgusting. This led to many performance issues and bugs, not to mention the fact that it was pure torture trying to add to my horrible code.
 
