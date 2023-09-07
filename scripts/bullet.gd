@@ -2,9 +2,9 @@ extends Area2D
 
 
 @export var speed = 1000
-@export var range = 100
+@export var bullet_range = 100
 
-@onready var origin = global_position
+@onready var bullet_origin = global_position
 
 var shot_from
 
@@ -12,7 +12,7 @@ var shot_from
 func _process(delta):
 	global_position += Vector2(speed, 0).rotated(rotation) * delta
 	
-	if (global_position - origin).length() > range:
+	if (global_position - bullet_origin).length() > bullet_range:
 		queue_free()
 
 
