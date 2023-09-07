@@ -37,3 +37,4 @@ func create_bullet():
 	var bullet_inst = bullet.instantiate()
 	world.add_child(bullet_inst)
 	bullet_inst.global_transform = barrel_end.global_transform
+	bullet_inst.shot_from = owner

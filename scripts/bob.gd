@@ -15,6 +15,7 @@ func add_gun(gun_to_add):
 	gun_inst.hide()
 	gun_inst.fired.connect(get_recoiled)
 	gun_inst.world = get_parent()
+	gun_inst.owner = self
 
 
 func get_recoiled(recoil_vector):
