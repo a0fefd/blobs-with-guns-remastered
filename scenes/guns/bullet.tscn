@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://c17xtf87860pg"]
+[gd_scene load_steps=4 format=3 uid="uid://c17xtf87860pg"]
 
 [ext_resource type="Texture2D" uid="uid://b8js0ayt0tve6" path="res://sprites/guns/bullets.png" id="1_ixjkk"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_ucfla"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7imty"]
-radius = 4.0
-height = 26.0
+radius = 2.0
+height = 14.0
 
 [node name="Bullet" type="Area2D"]
+script = ExtResource("1_ucfla")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ixjkk")
 vframes = 8
 
