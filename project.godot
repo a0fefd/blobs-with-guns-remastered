@@ -22,6 +22,10 @@ config/icon="res://sprites/logos/Blobs_guns_thumbnail.png"
 
 window/size/mode=3
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 fire={
