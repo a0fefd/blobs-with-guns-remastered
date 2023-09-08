@@ -30,7 +30,7 @@ func equip_gun(index):
 
 
 func get_recoiled(recoil_vector):
-	apply_central_impulse(recoil_vector.rotated(rotation))  # check this
+	apply_central_impulse(Vector2(recoil_vector.x * sprite.scale.x, recoil_vector.y).rotated(rotation))  # check this
 
 
 func flip():
