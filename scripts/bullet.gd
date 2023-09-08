@@ -4,9 +4,8 @@ extends Area2D
 @export var speed = 1000
 @export var bullet_range = 100
 
-@onready var bullet_origin = global_position
-
 var shot_from
+var bullet_origin
 
 
 func _process(delta):

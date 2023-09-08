@@ -38,3 +38,4 @@ func create_bullet():
 	world.add_child(bullet_inst)
 	bullet_inst.global_transform = barrel_end.global_transform
 	bullet_inst.shot_from = owner
+	bullet_inst.bullet_origin = global_position

@@ -18,6 +18,10 @@ boot_splash/image="res://sprites/logos/gutter_cat_spaced.png"
 boot_splash/use_filter=false
 config/icon="res://sprites/logos/Blobs_guns_thumbnail.png"
 
+[display]
+
+window/size/mode=3
+
 [input]
 
 fire={
