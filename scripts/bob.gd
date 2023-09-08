@@ -8,6 +8,7 @@ extends RigidBody2D
 @onready var collider = get_node("CollisionPolygon2D")
 
 var guns = []
+var equipped_gun = null
 
 
 func add_gun(gun_to_add):
@@ -20,8 +21,16 @@ func add_gun(gun_to_add):
 	gun_inst.owner = self
 
 
+func equip_gun(index):
+	if equipped_gun:
+		equipped_gun.hide()
+	
+	equipped_gun = guns[index]
+	equipped_gun.show()
+
+
 func get_recoiled(recoil_vector):
-	apply_central_impulse(recoil_vector.rotated(rotation) * gun_pos.scale)
+	apply_central_impulse(recoil_vector.rotated(rotation))  # check this
 
 
 func flip():
@@ -33,9 +42,9 @@ func flip():
 
 func _ready():
 	add_gun(gun)
-	guns[0].show()
+	equip_gun(0)
 
 
-func _process(delta):
-	if abs(guns[0].rotation_degrees) > 90:
+func _process(_delta):
+	if abs(equipped_gun.rotation_degrees) > 90:
 		flip()
