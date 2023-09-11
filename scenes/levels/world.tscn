@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbrdgykkgk1vo"]
+[gd_scene load_steps=4 format=3 uid="uid://cbrdgykkgk1vo"]
 
 [ext_resource type="TileSet" uid="uid://4x32bkmii5mh" path="res://tiles/tiles.tres" id="1_46tp5"]
-[ext_resource type="PackedScene" uid="uid://n5o0ehci0ads" path="res://scenes/blobs/bob.tscn" id="2_gugrc"]
+[ext_resource type="PackedScene" uid="uid://n5o0ehci0ads" path="res://scenes/blobs/player.tscn" id="2_gugrc"]
 [ext_resource type="PackedScene" uid="uid://dhp7pmx1h136u" path="res://scenes/blobs/blob.tscn" id="2_ximy6"]
-[ext_resource type="PackedScene" uid="uid://n1eghj4te88a" path="res://scenes/guns/gun.tscn" id="4_l1bof"]
 
 [node name="World" type="Node2D"]
 
@@ -15,6 +14,4 @@ tile_set = ExtResource("1_46tp5")
 format = 2
 layer_0/tile_data = PackedInt32Array(196601, 65536, 0, 196602, 65536, 0, 196603, 65536, 0, 196604, 65536, 0, 196605, 65536, 0, 196606, 65536, 0, 196607, 65536, 0, 131072, 65536, 0, 131073, 65536, 0, 131074, 65536, 0, 131075, 65536, 0, 131076, 65536, 0, 131077, 65536, 0, 131078, 65536, 0, 131079, 65536, 0, 196600, 65536, 0)
 
-[node name="Bob" parent="." instance=ExtResource("2_gugrc")]
-collision_layer = 1
-gun = ExtResource("4_l1bof")
+[node name="Player" parent="." instance=ExtResource("2_gugrc")]

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/bob.gd" id="2_uoenf"]
 [ext_resource type="PackedScene" uid="uid://n1eghj4te88a" path="res://scenes/guns/gun.tscn" id="3_0k28s"]
 
-[node name="Bob" instance=ExtResource("1_n7rfh")]
+[node name="Player" instance=ExtResource("1_n7rfh")]
 collision_layer = 7
 collision_mask = 1
 script = ExtResource("2_uoenf")
