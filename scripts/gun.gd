@@ -31,7 +31,11 @@ func eject_shell():
 	var shell_inst = shell.instantiate()
 	world.add_child(shell_inst)
 	shell_inst.global_transform = shell_pos.global_transform
-	shell_inst.apply_force(eject_force, Vector2.RIGHT * shell_spin)
+	
+	if get_parent().scale.x == 1:
+		shell_inst.apply_force(eject_force.rotated(global_rotation), Vector2(shell_spin, 0).rotated(global_rotation))
+	else:
+		shell_inst.apply_force(eject_force.rotated(-global_rotation), Vector2(shell_spin, 0).rotated(-global_rotation))
 
 
 func create_bullet():
