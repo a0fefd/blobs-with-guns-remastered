@@ -4,6 +4,7 @@ extends Node2D
 @export var recoil = 300
 @export var eject_force = Vector2(0, -10000)
 @export var shell_spin = 1
+@export var inaccuracy = 10
 @export var shell = preload("res://scenes/guns/shell.tscn")
 @export var bullet = preload("res://scenes/guns/bullet.tscn")
 
@@ -39,3 +40,4 @@ func create_bullet():
 	bullet_inst.global_transform = barrel_end.global_transform
 	bullet_inst.shot_from = owner
 	bullet_inst.bullet_origin = global_position
+	bullet_inst.rotation_degrees += randf_range(-inaccuracy, inaccuracy)
