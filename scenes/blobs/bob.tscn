@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://n5o0ehci0ads"]
+[gd_scene load_steps=4 format=3 uid="uid://n5o0ehci0ads"]
 
 [ext_resource type="PackedScene" uid="uid://dhp7pmx1h136u" path="res://scenes/blobs/blob.tscn" id="1_n7rfh"]
 [ext_resource type="Script" path="res://scripts/bob.gd" id="2_uoenf"]
+[ext_resource type="PackedScene" uid="uid://n1eghj4te88a" path="res://scenes/guns/gun.tscn" id="3_0k28s"]
 
 [node name="Bob" instance=ExtResource("1_n7rfh")]
 collision_layer = 7
 collision_mask = 1
 script = ExtResource("2_uoenf")
+gun = ExtResource("3_0k28s")
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 zoom = Vector2(3, 3)
