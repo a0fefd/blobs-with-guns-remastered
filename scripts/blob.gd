@@ -1,5 +1,5 @@
-extends RigidBody2D
 class_name Blob
+extends RigidBody2D
 
 
 @onready var gun_pos = get_node("GunPos")

@@ -1,20 +1,20 @@
 extends Node2D
 
 
+signal fired(recoil_vector)
+
 @export var recoil = 300
 @export var eject_force = Vector2(0, -10000)
 @export var shell_spin = 1
-@export var inaccuracy = 10
+@export var inaccuracy = 5
 @export var shell = preload("res://scenes/guns/shell.tscn")
 @export var bullet = preload("res://scenes/guns/bullet.tscn")
+
+var world
 
 @onready var animation_player = get_node("AnimationPlayer")
 @onready var shell_pos = get_node("Sprite2D/ShellPos")
 @onready var barrel_end = get_node("Sprite2D/BarrelEnd")
-
-var world
-
-signal fired(recoil_vector)
 
 
 func _process(_delta):
