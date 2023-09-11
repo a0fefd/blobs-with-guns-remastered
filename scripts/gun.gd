@@ -19,10 +19,7 @@ signal fired(recoil_vector)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("fire"):
-		fired.emit(-Vector2(recoil, 0).rotated(rotation))
-		animation_player.play("shoot")
-		eject_shell()
-		create_bullet()
+		fire()
 	
 	look_at(get_global_mouse_position())
 
@@ -45,3 +42,10 @@ func create_bullet():
 	bullet_inst.shot_from = owner
 	bullet_inst.bullet_origin = global_position
 	bullet_inst.rotation_degrees += randf_range(-inaccuracy, inaccuracy)
+
+
+func fire():
+	fired.emit(-Vector2(recoil, 0).rotated(rotation))
+	animation_player.play("shoot")
+	eject_shell()
+	create_bullet()
