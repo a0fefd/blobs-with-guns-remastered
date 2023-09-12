@@ -9,7 +9,6 @@ signal fired(recoil_vector)
 @export var mag_size: int = 10
 @export var eject_force := Vector2(0, -10000)
 @export var rounds_per_second: int = 10
-@export var facing := Vector2.RIGHT # Set to Vector2.DIR
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
 @export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 
@@ -17,6 +16,7 @@ var world
 var can_shoot := true
 var reloading := false
 var ammo_in_mag: int = mag_size
+var facing: Vector2
 
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var shell_pos: Node2D = get_node("Sprite2D/ShellPos")
@@ -36,8 +36,6 @@ func _process(_delta):
 		reload()
 	
 	look_at(get_global_mouse_position())
-	
-	facing = get_parent().scale
 
 
 func eject_shell():
@@ -45,9 +43,11 @@ func eject_shell():
 	world.add_child(shell_inst)
 	shell_inst.global_transform = shell_pos.global_transform
 	
-	if facing.x == Vector2.RIGHT.x:
+	facing = get_parent().scale
+	
+	if facing == Vector2.RIGHT:
 		shell_inst.apply_force(eject_force.rotated(global_rotation), Vector2(shell_spin, 0).rotated(global_rotation))
-	elif facing.x == Vector2.LEFT.x:
+	elif facing == Vector2.LEFT:
 		shell_inst.apply_force(eject_force.rotated(-global_rotation), Vector2(shell_spin, 0).rotated(-global_rotation))
 
 
