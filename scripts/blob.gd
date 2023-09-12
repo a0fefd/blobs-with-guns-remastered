@@ -16,6 +16,6 @@ func flip():
 	gun_pos.scale.x *= -1
 
 
-func _integrate_forces(state):
+func _integrate_forces(_state):
 	if get_linear_velocity().length() > max_velocity:
 		set_linear_velocity(get_linear_velocity().normalized() * max_velocity)
