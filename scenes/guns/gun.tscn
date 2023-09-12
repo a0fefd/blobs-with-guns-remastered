@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://n1eghj4te88a"]
+[gd_scene load_steps=10 format=3 uid="uid://n1eghj4te88a"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_8yt1r"]
 [ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="1_b0041"]
@@ -100,9 +100,26 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_gatvx"]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -12.5664]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xhcu1"]
 _data = {
 "RESET": SubResource("Animation_3mqgm"),
+"reload": SubResource("Animation_gatvx"),
 "shoot": SubResource("Animation_3qays")
 }
 

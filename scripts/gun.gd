@@ -58,4 +58,5 @@ func fire():
 
 
 func reload():
+	animation_player.play("reload")
 	ammo_in_mag = mag_size
