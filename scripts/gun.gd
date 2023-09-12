@@ -8,20 +8,27 @@ signal fired(recoil_vector)
 @export var inaccuracy: int = 5
 @export var mag_size: int = 10
 @export var eject_force: Vector2 = Vector2(0, -10000)
+@export var rounds_per_second: int = 10
 @export var facing: Vector2 = Vector2.RIGHT # Set to Vector2.DIR
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
 @export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 
 var world
+var can_shoot = true
 var ammo_in_mag = mag_size
 
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var shell_pos: Node2D = get_node("Sprite2D/ShellPos")
 @onready var barrel_end: Node2D = get_node("Sprite2D/BarrelEnd")
+@onready var shoot_timer: Timer = get_node("ShootTimer")
+
+
+func _ready():
+	shoot_timer.wait_time = 1 / rounds_per_second
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("fire") and ammo_in_mag > 0:
+	if Input.is_action_just_pressed("fire") and ammo_in_mag > 0 and can_shoot:
 		fire()
 	
 	if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size:
@@ -58,8 +65,14 @@ func fire():
 	eject_shell()
 	create_bullet()
 	ammo_in_mag -= 1
+	can_shoot = false
+	shoot_timer.start()
 
 
 func reload():
 	animation_player.play("reload")
 	ammo_in_mag = mag_size
+
+
+func _on_shoot_timer_timeout():
+	can_shoot = true

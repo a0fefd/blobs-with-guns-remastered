@@ -45,22 +45,6 @@ tracks/2/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_gatvx"]
-resource_name = "reload"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -12.5664]
-}
-
 [sub_resource type="Animation" id="Animation_3qays"]
 resource_name = "shoot"
 length = 0.1
@@ -116,6 +100,22 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_gatvx"]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -12.5664]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xhcu1"]
 _data = {
 "RESET": SubResource("Animation_3mqgm"),
@@ -154,3 +154,8 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_xhcu1")
 }
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
