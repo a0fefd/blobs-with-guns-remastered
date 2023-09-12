@@ -3,20 +3,21 @@ extends Node2D
 
 signal fired(recoil_vector)
 
-@export var recoil = 300
-@export var eject_force = Vector2(0, -10000)
-@export var shell_spin = 1
-@export var inaccuracy = 5
-@export var mag_size = 10
-@export var shell = preload("res://scenes/guns/shell.tscn")
-@export var bullet = preload("res://scenes/guns/bullet.tscn")
+@export var recoil: int = 300
+@export var shell_spin: int = 1
+@export var inaccuracy: int = 5
+@export var mag_size: int = 10
+@export var eject_force: Vector2 = Vector2(0, -10000)
+@export var facing: Vector2 = Vector2.RIGHT # Set to Vector2.DIR
+@export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
+@export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 
 var world
 var ammo_in_mag = mag_size
 
-@onready var animation_player = get_node("AnimationPlayer")
-@onready var shell_pos = get_node("Sprite2D/ShellPos")
-@onready var barrel_end = get_node("Sprite2D/BarrelEnd")
+@onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
+@onready var shell_pos: Node2D = get_node("Sprite2D/ShellPos")
+@onready var barrel_end: Node2D = get_node("Sprite2D/BarrelEnd")
 
 
 func _process(_delta):
@@ -27,6 +28,8 @@ func _process(_delta):
 		reload()
 	
 	look_at(get_global_mouse_position())
+	
+	facing = get_parent().scale
 
 
 func eject_shell():
@@ -34,9 +37,9 @@ func eject_shell():
 	world.add_child(shell_inst)
 	shell_inst.global_transform = shell_pos.global_transform
 	
-	if get_parent().scale.x == 1:
+	if facing.x == Vector2.RIGHT.x:
 		shell_inst.apply_force(eject_force.rotated(global_rotation), Vector2(shell_spin, 0).rotated(global_rotation))
-	else:
+	elif facing.x == Vector2.LEFT.x:
 		shell_inst.apply_force(eject_force.rotated(-global_rotation), Vector2(shell_spin, 0).rotated(-global_rotation))
 
 
