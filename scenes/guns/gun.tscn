@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://n1eghj4te88a"]
+[gd_scene load_steps=9 format=3 uid="uid://n1eghj4te88a"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_8yt1r"]
 [ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="1_b0041"]
 [ext_resource type="Texture2D" uid="uid://da7xk67axn8fd" path="res://sprites/guns/muzzle flashes.png" id="3_6ukkm"]
 [ext_resource type="AudioStream" uid="uid://eywgm3nylp6r" path="res://sounds/shoot_sound.wav" id="3_ilwih"]
+[ext_resource type="Texture2D" uid="uid://4782gegcyi5f" path="res://sprites/lights/roundlight.png" id="4_01oks"]
 
 [sub_resource type="Animation" id="Animation_3mqgm"]
 length = 0.001
@@ -120,6 +121,10 @@ position = Vector2(5, -2)
 visible = false
 position = Vector2(6, 0)
 texture = ExtResource("3_6ukkm")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D/BarrelEnd/Sprite2D"]
+color = Color(1, 0.733333, 0, 1)
+texture = ExtResource("4_01oks")
 
 [node name="ShellPos" type="Node2D" parent="Sprite2D"]
 position = Vector2(-1, -3)
