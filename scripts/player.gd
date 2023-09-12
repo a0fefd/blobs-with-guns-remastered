@@ -7,6 +7,8 @@ extends Blob
 var guns := []
 var equipped_gun = null
 
+@onready var ammo_label: Label = get_node("AmmoLabel")
+
 
 func _ready():
 	add_gun(gun)
@@ -18,6 +20,8 @@ func _process(_delta):
 		flip()
 	elif sprite.scale.x != 1 and abs(rad_to_deg(get_angle_to(get_global_mouse_position()))) < 90:
 		flip()
+	
+	ammo_label.text = str(equipped_gun.ammo_in_mag)
 
 
 func add_gun(gun_to_add):
