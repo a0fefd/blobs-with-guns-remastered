@@ -8,6 +8,7 @@ var guns := []
 var equipped_gun = null
 
 @onready var ammo_label: Label = get_node("AmmoLabel")
+@onready var world: Node2D = get_parent()
 
 
 func _ready():
@@ -29,7 +30,7 @@ func add_gun(gun_to_add):
 	guns.append(gun_inst)
 	gun_pos.add_child(gun_inst)
 	gun_inst.hide()
-	gun_inst.world = get_parent()
+	gun_inst.world = world
 	gun_inst.owner = self
 	gun_inst.fired.connect(get_recoiled)
 
