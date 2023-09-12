@@ -14,7 +14,7 @@ Anyway, so this time we're doing it again, but better.
 
 **Currently at stage 1**
 
-1. Reconstruct the core framework of BWG ([see here)](https://github.com/GutterCat42/blobs-with-guns-archive))
+1. Reconstruct the core framework of BWG ([see here](https://github.com/GutterCat42/blobs-with-guns-archive))
 2. Do it all using Git and Github from the beginning
 3. Do it in [Godot 4](https://github.com/godotengine/godot)
 4. Document everything in Github Wikis to make it easy for other contributors (and also just because I like documentation)
