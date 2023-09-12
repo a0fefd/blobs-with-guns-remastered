@@ -22,6 +22,7 @@ var facing: Vector2
 @onready var shell_pos: Node2D = get_node("Sprite2D/ShellPos")
 @onready var barrel_end: Node2D = get_node("Sprite2D/BarrelEnd")
 @onready var shoot_timer: Timer = get_node("ShootTimer")
+@onready var holder: Node2D = get_parent()
 
 
 func _ready():
@@ -43,7 +44,7 @@ func eject_shell():
 	world.add_child(shell_inst)
 	shell_inst.global_transform = shell_pos.global_transform
 	
-	facing = get_parent().scale
+	facing = holder.scale
 	
 	if facing == Vector2.RIGHT:
 		shell_inst.apply_force(eject_force.rotated(global_rotation), Vector2(shell_spin, 0).rotated(global_rotation))
