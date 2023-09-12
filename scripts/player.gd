@@ -2,9 +2,9 @@ class_name Player
 extends Blob
 
 
-@export var gun = preload("res://scenes/guns/gun.tscn")
+@export var gun: PackedScene = preload("res://scenes/guns/gun.tscn")
 
-var guns = []
+var guns := []
 var equipped_gun = null
 
 

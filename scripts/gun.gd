@@ -4,18 +4,18 @@ extends Node2D
 signal fired(recoil_vector)
 
 @export var recoil: int = 300
-@export var shell_spin: int = 1
+@export var shell_spin: float = 1
 @export var inaccuracy: int = 5
 @export var mag_size: int = 10
-@export var eject_force: Vector2 = Vector2(0, -10000)
+@export var eject_force := Vector2(0, -10000)
 @export var rounds_per_second: int = 10
-@export var facing: Vector2 = Vector2.RIGHT # Set to Vector2.DIR
+@export var facing := Vector2.RIGHT # Set to Vector2.DIR
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
 @export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 
 var world
-var can_shoot = true
-var ammo_in_mag = mag_size
+var can_shoot := true
+var ammo_in_mag: int = mag_size
 
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var shell_pos: Node2D = get_node("Sprite2D/ShellPos")

@@ -2,11 +2,11 @@ class_name Blob
 extends RigidBody2D
 
 
-@export var max_velocity = 500
+@export var max_velocity: int = 500
 
-@onready var gun_pos = get_node("GunPos")
-@onready var sprite = get_node("Sprite2D")
-@onready var collider = get_node("CollisionPolygon2D")
+@onready var gun_pos: Node2D = get_node("GunPos")
+@onready var sprite: Sprite2D = get_node("Sprite2D")
+@onready var collider: CollisionPolygon2D = get_node("CollisionPolygon2D")
 
 
 func flip():

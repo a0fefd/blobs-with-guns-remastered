@@ -1,11 +1,11 @@
 extends Area2D
 
 
-@export var speed = 1000
-@export var bullet_range = 100
+@export var speed: int = 1000
+@export var bullet_range: int = 100
 
 var shot_from
-var bullet_origin
+var bullet_origin: Vector2
 
 
 func _process(delta):
