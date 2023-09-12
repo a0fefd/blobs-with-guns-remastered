@@ -2,7 +2,7 @@ extends Area2D
 
 
 @export var speed: int = 1000
-@export var bullet_range: int = 100
+@export var bullet_range: int = 300
 
 var shot_from
 var bullet_origin: Vector2
