@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://islpgen2qypr"]
+
+[ext_resource type="FontFile" uid="uid://wgc23fn8gcog" path="res://theme/BWG.ttf" id="1_ml4kg"]
+
+[resource]
+default_font = ExtResource("1_ml4kg")
