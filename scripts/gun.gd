@@ -46,9 +46,9 @@ func eject_shell():
 	
 	facing = parent.scale
 	
-	if facing == Vector2.RIGHT:
+	if facing.x == Vector2.RIGHT.x:
 		shell_inst.apply_force(eject_force.rotated(global_rotation), Vector2(shell_spin, 0).rotated(global_rotation))
-	elif facing == Vector2.LEFT:
+	elif facing.x == Vector2.LEFT.x:
 		shell_inst.apply_force(eject_force.rotated(-global_rotation), Vector2(shell_spin, 0).rotated(-global_rotation))
 
 
