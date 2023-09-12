@@ -7,10 +7,12 @@ signal fired(recoil_vector)
 @export var eject_force = Vector2(0, -10000)
 @export var shell_spin = 1
 @export var inaccuracy = 5
+@export var mag_size = 10
 @export var shell = preload("res://scenes/guns/shell.tscn")
 @export var bullet = preload("res://scenes/guns/bullet.tscn")
 
 var world
+var ammo_in_mag = mag_size
 
 @onready var animation_player = get_node("AnimationPlayer")
 @onready var shell_pos = get_node("Sprite2D/ShellPos")
@@ -18,8 +20,11 @@ var world
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("fire"):
+	if Input.is_action_just_pressed("fire") and ammo_in_mag > 0:
 		fire()
+	
+	if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size:
+		reload()
 	
 	look_at(get_global_mouse_position())
 
@@ -49,3 +54,8 @@ func fire():
 	animation_player.play("shoot")
 	eject_shell()
 	create_bullet()
+	ammo_in_mag -= 1
+
+
+func reload():
+	ammo_in_mag = mag_size
