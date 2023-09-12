@@ -15,6 +15,7 @@ signal fired(recoil_vector)
 
 var world
 var can_shoot := true
+var reloading := false
 var ammo_in_mag: int = mag_size
 
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
@@ -28,10 +29,10 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("fire") and ammo_in_mag > 0 and can_shoot:
+	if Input.is_action_just_pressed("fire") and ammo_in_mag > 0 and can_shoot and not reloading:
 		fire()
 	
-	if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size:
+	if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and not reloading:
 		reload()
 	
 	look_at(get_global_mouse_position())
@@ -71,8 +72,14 @@ func fire():
 
 func reload():
 	animation_player.play("reload")
-	ammo_in_mag = mag_size
+	reloading = true
 
 
 func _on_shoot_timer_timeout():
 	can_shoot = true
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "reload":
+		reloading = false
+		ammo_in_mag = mag_size
