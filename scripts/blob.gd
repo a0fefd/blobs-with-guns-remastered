@@ -2,6 +2,8 @@ class_name Blob
 extends RigidBody2D
 
 
+@export var max_velocity = 500
+
 @onready var gun_pos = get_node("GunPos")
 @onready var sprite = get_node("Sprite2D")
 @onready var collider = get_node("CollisionPolygon2D")
@@ -12,3 +14,8 @@ func flip():
 	collider.scale.x *= -1
 	gun_pos.position.x *= -1
 	gun_pos.scale.x *= -1
+
+
+func _integrate_forces(state):
+	if get_linear_velocity().length() > max_velocity:
+		set_linear_velocity(get_linear_velocity().normalized() * max_velocity)
