@@ -8,7 +8,7 @@ signal fired(recoil_vector)
 @export var inaccuracy: int = 5
 @export var mag_size: int = 10
 @export var eject_force := Vector2(0, -10000)
-@export var rounds_per_second: int = 10
+@export var rounds_per_second: float = 10
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
 @export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 
