@@ -12,6 +12,9 @@ signal ammo_changed(ammo_in_mag, ammo)
 @export var eject_force := Vector2(0, -10000)
 @export var rounds_per_second: float = 10
 @export var full_auto := false
+@export var shotgun := false
+@export var num_bullets: int = 10
+@export var shotgun_spread: = 40
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
 @export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 
@@ -66,21 +69,27 @@ func eject_shell():
 		shell_inst.apply_force(eject_force.rotated(-global_rotation), Vector2(shell_spin, 0).rotated(-global_rotation))
 
 
-func create_bullet():
+func create_bullet(angle = 0):
 	var bullet_inst = bullet.instantiate()
 	world.add_child(bullet_inst)
 	bullet_inst.global_transform = barrel_end.global_transform
 	bullet_inst.shot_from = owner
 	bullet_inst.bullet_origin = global_position
-	bullet_inst.rotation_degrees += randf_range(-inaccuracy, inaccuracy)
+	bullet_inst.rotation_degrees += angle + randf_range(-inaccuracy, inaccuracy)
 
 
 func fire():
 	fired.emit(-Vector2(recoil, 0).rotated(rotation))
 	ammo_changed.emit(ammo_in_mag, ammo)
 	animation_player.play("shoot")
+	
+	if shotgun:
+		for i in range(num_bullets):
+			create_bullet(-(shotgun_spread / 2) + i * (shotgun_spread / num_bullets))
+	else:
+		create_bullet()
+	
 	eject_shell()
-	create_bullet()
 	ammo_in_mag -= 1
 	can_shoot = false
 	shoot_timer.start()
