@@ -15,7 +15,6 @@ signal ammo_changed(ammo_in_mag, ammo)
 @export var shotgun := false
 @export var num_bullets: int = 10
 @export var shotgun_spread: = 40
-@export var focus_time_scale: float = 0.2
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
 @export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 

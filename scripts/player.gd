@@ -3,6 +3,7 @@ extends Blob
 
 
 @export var gun: PackedScene = preload("res://scenes/guns/gun.tscn")
+@export var focus_time_scale: float = 0.2
 
 var guns := []
 var equipped_gun = null
