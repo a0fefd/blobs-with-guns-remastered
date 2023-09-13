@@ -25,10 +25,10 @@ func _process(_delta):
 	
 	if Input.is_action_pressed("focus"):
 		Engine.time_scale = focus_time_scale
-		#AudioServer.global_rate_scale = 2 - focus_time_scale
+		AudioServer.get_bus_effect(0, 0).pitch_scale = focus_time_scale
 	else:
 		Engine.time_scale = 1
-		#AudioServer.global_rate_scale = 1
+		AudioServer.get_bus_effect(0, 0).pitch_scale = 1
 
 
 func add_gun(gun_to_add):
