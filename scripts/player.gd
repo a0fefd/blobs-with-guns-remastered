@@ -21,8 +21,6 @@ func _process(_delta):
 		flip()
 	elif sprite.scale.x != 1 and abs(rad_to_deg(get_angle_to(get_global_mouse_position()))) < 90:
 		flip()
-	
-	ammo_label.text = str(equipped_gun.ammo_in_mag) + " | " + str(equipped_gun.ammo)
 
 
 func add_gun(gun_to_add):
@@ -33,6 +31,7 @@ func add_gun(gun_to_add):
 	gun_inst.world = world
 	gun_inst.owner = self
 	gun_inst.fired.connect(get_recoiled)
+	gun_inst.ammo_changed.connect(update_ammo_display)
 
 
 func equip_gun(index):
@@ -45,3 +44,7 @@ func equip_gun(index):
 
 func get_recoiled(recoil_vector):
 	apply_central_impulse(Vector2(recoil_vector.x * sprite.scale.x, recoil_vector.y).rotated(rotation))
+
+
+func update_ammo_display(ammo_in_mag, ammo):
+	ammo_label.text = str(ammo_in_mag) + " | " + str(ammo)

@@ -2,6 +2,7 @@ extends Node2D
 
 
 signal fired(recoil_vector)
+signal ammo_changed(ammo_in_mag, ammo)
 
 @export var recoil: int = 300
 @export var shell_spin: float = 1
@@ -67,6 +68,7 @@ func create_bullet():
 
 func fire():
 	fired.emit(-Vector2(recoil, 0).rotated(rotation))
+	ammo_changed.emit(ammo_in_mag, ammo)
 	animation_player.play("shoot")
 	eject_shell()
 	create_bullet()
@@ -93,3 +95,5 @@ func _on_animation_player_animation_finished(anim_name):
 		else:
 			ammo = 0
 			ammo_in_mag = ammo
+	
+	ammo_changed.emit(ammo_in_mag, ammo)
