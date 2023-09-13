@@ -17,6 +17,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Camera2D" index="0"]
+current = true
 
 [node name="AmmoLabel" type="Label" parent="." index="4"]
 anchors_preset = 7
