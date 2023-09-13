@@ -14,9 +14,13 @@ config/name="Blobs With Guns: Remastered"
 run/main_scene="res://scenes/levels/world.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/bg_color=Color(0.113725, 0.611765, 0.941176, 1)
-boot_splash/image="res://sprites/logos/gutter_cat_spaced.png"
+boot_splash/image="res://sprites/logos/gutter_cat_splash.png"
 boot_splash/use_filter=false
-config/icon="res://sprites/logos/Blobs_guns_thumbnail.png"
+config/icon="res://sprites/logos/blob_thumbnail.png"
+
+[autoload]
+
+Globals="*res://scripts/globals.gd"
 
 [filesystem]
 
