@@ -18,4 +18,5 @@ func _process(delta):
 func _on_body_entered(body):
 	if body != shot_from and body.is_in_group("Blobs"):
 		body.queue_free()
-		queue_free()
+	
+	queue_free()
