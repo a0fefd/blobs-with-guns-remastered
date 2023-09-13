@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyhflgd6y81qu"
-path="res://.godot/imported/Blobs_guns_thumbnail.png-c36f4a2bab8ad3d93765439e3d437458.ctex"
+path="res://.godot/imported/blob_thumbnail.png-522ea42d87f567fa44d6e2e26b010a1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/logos/Blobs_guns_thumbnail.png"
-dest_files=["res://.godot/imported/Blobs_guns_thumbnail.png-c36f4a2bab8ad3d93765439e3d437458.ctex"]
+source_file="res://sprites/logos/blob_thumbnail.png"
+dest_files=["res://.godot/imported/blob_thumbnail.png-522ea42d87f567fa44d6e2e26b010a1f.ctex"]
 
 [params]
 
