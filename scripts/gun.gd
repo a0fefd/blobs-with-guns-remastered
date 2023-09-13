@@ -14,7 +14,7 @@ signal ammo_changed(ammo_in_mag, ammo)
 @export var full_auto := false
 @export var shotgun := false
 @export var num_bullets: int = 9  # best if this is odd so that there is a center bullet
-@export var shotgun_spread: int = 40
+@export var shotgun_spread: float = 40
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
 @export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 
@@ -69,7 +69,7 @@ func eject_shell():
 		shell_inst.apply_force(eject_force.rotated(-global_rotation), Vector2(shell_spin, 0).rotated(-global_rotation))
 
 
-func create_bullet(angle = 0):
+func create_bullet(angle: float = 0):
 	var bullet_inst = bullet.instantiate()
 	world.add_child(bullet_inst)
 	bullet_inst.global_transform = barrel_end.global_transform
