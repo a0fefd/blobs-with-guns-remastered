@@ -31,8 +31,11 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("fire") and ammo_in_mag > 0 and can_shoot and not reloading:
-		fire()
+	if Input.is_action_just_pressed("fire") and can_shoot and not reloading:
+		if ammo_in_mag > 0:
+			fire()
+		else:
+			reload()
 	
 	if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and not reloading:
 		reload()
