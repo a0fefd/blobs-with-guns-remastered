@@ -7,6 +7,7 @@ signal fired(recoil_vector)
 @export var shell_spin: float = 1
 @export var inaccuracy: int = 5
 @export var mag_size: int = 10
+@export var ammo: int = 30
 @export var eject_force := Vector2(0, -10000)
 @export var rounds_per_second: float = 10
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
@@ -83,4 +84,9 @@ func _on_shoot_timer_timeout():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "reload":
 		reloading = false
-		ammo_in_mag = mag_size
+		if ammo >= mag_size:
+			ammo -= (mag_size - ammo_in_mag)
+			ammo_in_mag = mag_size
+		else:
+			ammo = 0
+			ammo_in_mag = ammo
