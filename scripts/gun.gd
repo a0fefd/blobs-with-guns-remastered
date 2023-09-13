@@ -11,13 +11,14 @@ signal ammo_changed(ammo_in_mag, ammo)
 @export var ammo: int = 30
 @export var eject_force := Vector2(0, -10000)
 @export var rounds_per_second: float = 10
+@export var full_auto := false
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
 @export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 
 var world
 var can_shoot := true
 var reloading := false
-var ammo_in_mag: int = mag_size
+var ammo_in_mag: int = 0
 var facing: Vector2
 
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
@@ -29,14 +30,22 @@ var facing: Vector2
 
 func _ready():
 	shoot_timer.wait_time = 1 / rounds_per_second
+	reload()
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("fire") and can_shoot and not reloading:
-		if ammo_in_mag > 0:
-			fire()
-		else:
-			reload()
+	if full_auto:
+		if Input.is_action_pressed("fire") and can_shoot and not reloading:
+			if ammo_in_mag > 0:
+				fire()
+			else:
+				reload()
+	else:
+		if Input.is_action_just_pressed("fire") and can_shoot and not reloading:
+			if ammo_in_mag > 0:
+				fire()
+			else:
+				reload()
 	
 	if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and not reloading:
 		reload()
