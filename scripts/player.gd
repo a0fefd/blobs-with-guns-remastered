@@ -3,7 +3,6 @@ extends Blob
 
 
 @export var gun: PackedScene = preload("res://scenes/guns/gun.tscn")
-@export var focus_time_scale: float = 0.2
 
 var guns := []
 var equipped_gun = null
@@ -22,13 +21,6 @@ func _process(_delta):
 		flip()
 	elif sprite.scale.x != 1 and abs(rad_to_deg(get_angle_to(get_global_mouse_position()))) < 90:
 		flip()
-	
-	if Input.is_action_pressed("focus"):
-		Engine.time_scale = focus_time_scale
-		AudioServer.get_bus_effect(0, 0).pitch_scale = focus_time_scale
-	else:
-		Engine.time_scale = 1
-		AudioServer.get_bus_effect(0, 0).pitch_scale = 1
 
 
 func add_gun(gun_to_add):
