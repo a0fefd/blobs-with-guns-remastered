@@ -13,8 +13,8 @@ signal ammo_changed(ammo_in_mag, ammo)
 @export var rounds_per_second: float = 10
 @export var full_auto := false
 @export var shotgun := false
-@export var num_bullets: int = 10
-@export var shotgun_spread: = 40
+@export var num_bullets: int = 9  # best if this is odd so that there is a center bullet
+@export var shotgun_spread: int = 40
 @export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
 @export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
 
@@ -85,7 +85,7 @@ func fire():
 	
 	if shotgun:
 		for i in range(num_bullets):
-			create_bullet(-(shotgun_spread / 2) + i * (shotgun_spread / num_bullets))
+			create_bullet((shotgun_spread / (num_bullets - 1)) * i - shotgun_spread / 2)
 	else:
 		create_bullet()
 	
