@@ -21,6 +21,13 @@ func _process(_delta):
 		flip()
 	elif sprite.scale.x != 1 and abs(rad_to_deg(get_angle_to(get_global_mouse_position()))) < 90:
 		flip()
+	
+	if Input.is_action_pressed("focus"):
+		Engine.time_scale = focus_time_scale
+		#AudioServer.global_rate_scale = 2 - focus_time_scale
+	else:
+		Engine.time_scale = 1
+		#AudioServer.global_rate_scale = 1
 
 
 func add_gun(gun_to_add):

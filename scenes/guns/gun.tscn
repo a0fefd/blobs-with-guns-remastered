@@ -125,20 +125,6 @@ _data = {
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_8yt1r")
-recoil = null
-shell_spin = null
-inaccuracy = null
-mag_size = null
-ammo = null
-eject_force = null
-rounds_per_second = null
-full_auto = null
-shotgun = true
-num_bullets = null
-shotgun_spread = null
-focus_time_scale = null
-shell = null
-bullet = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_b0041")

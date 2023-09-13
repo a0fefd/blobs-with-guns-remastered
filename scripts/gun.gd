@@ -54,13 +54,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and not reloading:
 		reload()
 	
-	if Input.is_action_pressed("focus"):
-		Engine.time_scale = focus_time_scale
-		AudioServer.global_rate_scale = 2 - focus_time_scale
-	else:
-		Engine.time_scale = 1
-		AudioServer.global_rate_scale = 1
-	
 	look_at(get_global_mouse_position())
 
 
