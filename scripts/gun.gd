@@ -107,11 +107,15 @@ func _on_shoot_timer_timeout():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "reload":
 		reloading = false
-		if ammo >= mag_size:
-			ammo -= (mag_size - ammo_in_mag)
+		
+		ammo += ammo_in_mag
+		ammo_in_mag = 0
+		
+		if ammo - mag_size >= 0:
 			ammo_in_mag = mag_size
+			ammo -= mag_size
 		else:
-			ammo = 0
 			ammo_in_mag = ammo
-	
-	ammo_changed.emit(ammo_in_mag, ammo)
+			ammo = 0
+		
+		ammo_changed.emit(ammo_in_mag, ammo)
