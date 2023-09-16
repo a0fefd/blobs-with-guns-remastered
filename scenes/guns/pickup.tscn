@@ -19,6 +19,7 @@ shape = SubResource("CircleShape2D_q6qob")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0, 1, 0.0470588, 1)
+energy = 0.2
 texture = ExtResource("2_jiq6v")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
