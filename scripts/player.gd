@@ -56,3 +56,7 @@ func get_recoiled(recoil_vector):
 
 func update_ammo_display(ammo_in_mag, ammo):
 	ammo_label.text = str(ammo_in_mag) + " | " + str(ammo)
+
+
+func pickup(item):
+	add_gun(item)

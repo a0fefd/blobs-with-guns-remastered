@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://mw5josbbakqx" path="res://scenes/guns/pistol.tscn" id="3_cwe7h"]
 [ext_resource type="Theme" uid="uid://islpgen2qypr" path="res://theme/bwg_theme.tres" id="4_aon52"]
 
-[node name="Player" instance=ExtResource("1_n7rfh")]
+[node name="Player" groups=["Players"] instance=ExtResource("1_n7rfh")]
 collision_layer = 5
 collision_mask = 1
 script = ExtResource("2_pixgc")
