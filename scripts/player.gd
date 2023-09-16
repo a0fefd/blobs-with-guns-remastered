@@ -29,6 +29,17 @@ func _process(_delta):
 	else:
 		Engine.time_scale = 1
 		AudioServer.playback_speed_scale = 1
+	
+	if Input.is_action_just_pressed("next_gun"):
+		if equipped_gun == guns[-1]:
+			equip_gun(0)
+		else:
+			equip_gun(guns.find(equipped_gun) + 1)
+	if Input.is_action_just_pressed("prev_gun"):
+		if equipped_gun == guns[0]:
+			equip_gun(-1)
+		else:
+			equip_gun(guns.find(equipped_gun) - 1)
 
 
 func add_gun(gun_to_add):
@@ -40,13 +51,16 @@ func add_gun(gun_to_add):
 	gun_inst.owner = self
 	gun_inst.fired.connect(get_recoiled)
 	gun_inst.ammo_changed.connect(update_ammo_display)
+	gun_inst.equipped = false
 
 
 func equip_gun(index):
 	if equipped_gun:
+		equipped_gun.equipped = false
 		equipped_gun.hide()
 	
 	equipped_gun = guns[index]
+	equipped_gun.equipped = true
 	equipped_gun.show()
 
 

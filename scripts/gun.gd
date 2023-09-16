@@ -23,6 +23,7 @@ var can_shoot := true
 var reloading := false
 var ammo_in_mag: int = 0
 var facing: Vector2
+var equipped := false
 
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var shell_pos: Node2D = get_node("Sprite2D/ShellPos")
@@ -37,23 +38,24 @@ func _ready():
 
 
 func _process(_delta):
-	if full_auto:
-		if Input.is_action_pressed("fire") and can_shoot and not reloading:
-			if ammo_in_mag > 0:
-				fire()
-			else:
-				reload()
-	else:
-		if Input.is_action_just_pressed("fire") and can_shoot and not reloading:
-			if ammo_in_mag > 0:
-				fire()
-			else:
-				reload()
-	
-	if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and not reloading:
-		reload()
-	
-	look_at(get_global_mouse_position())
+	if equipped:
+		look_at(get_global_mouse_position())
+		
+		if full_auto:
+			if Input.is_action_pressed("fire") and can_shoot and not reloading:
+				if ammo_in_mag > 0:
+					fire()
+				else:
+					reload()
+		else:
+			if Input.is_action_just_pressed("fire") and can_shoot and not reloading:
+				if ammo_in_mag > 0:
+					fire()
+				else:
+					reload()
+		
+		if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and not reloading:
+			reload()
 
 
 func eject_shell():
