@@ -2,6 +2,8 @@
 
 (This is highly subject to change)
 
+Also see https://github.com/users/GutterCat42/projects/6/
+
 **Currently at stage 1**
 
 ## Stage 1
