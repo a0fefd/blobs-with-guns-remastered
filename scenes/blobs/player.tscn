@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dhp7pmx1h136u" path="res://scenes/blobs/blob.tscn" id="1_n7rfh"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_pixgc"]
-[ext_resource type="PackedScene" uid="uid://n1eghj4te88a" path="res://scenes/guns/gun.tscn" id="3_0k28s"]
+[ext_resource type="PackedScene" uid="uid://mw5josbbakqx" path="res://scenes/guns/pistol.tscn" id="3_cwe7h"]
 [ext_resource type="Theme" uid="uid://islpgen2qypr" path="res://theme/bwg_theme.tres" id="4_aon52"]
 
 [node name="Player" instance=ExtResource("1_n7rfh")]
 collision_layer = 5
 collision_mask = 1
 script = ExtResource("2_pixgc")
-gun = ExtResource("3_0k28s")
+gun = ExtResource("3_cwe7h")
 focus_time_scale = 0.2
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
