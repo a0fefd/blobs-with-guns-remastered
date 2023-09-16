@@ -103,6 +103,17 @@ func reload():
 	reloading = true
 
 
+func equip():
+	show()
+	equipped = true
+	ammo_changed.emit(ammo_in_mag, ammo)
+
+
+func unequip():
+	hide()
+	equipped = false
+
+
 func _on_shoot_timer_timeout():
 	can_shoot = true
 

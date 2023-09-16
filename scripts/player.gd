@@ -51,17 +51,15 @@ func add_gun(gun_to_add):
 	gun_inst.owner = self
 	gun_inst.fired.connect(get_recoiled)
 	gun_inst.ammo_changed.connect(update_ammo_display)
-	gun_inst.equipped = false
+	gun_inst.unequip()
 
 
 func equip_gun(index):
 	if equipped_gun:
-		equipped_gun.equipped = false
-		equipped_gun.hide()
+		equipped_gun.unequip()
 	
 	equipped_gun = guns[index]
-	equipped_gun.equipped = true
-	equipped_gun.show()
+	equipped_gun.equip()
 
 
 func get_recoiled(recoil_vector):
