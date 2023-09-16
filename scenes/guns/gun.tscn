@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://n1eghj4te88a"]
+[gd_scene load_steps=11 format=3 uid="uid://n1eghj4te88a"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_8yt1r"]
 [ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="1_b0041"]
@@ -116,9 +116,13 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_f4sj6"]
+resource_name = "equip"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xhcu1"]
 _data = {
 "RESET": SubResource("Animation_3mqgm"),
+"equip": SubResource("Animation_f4sj6"),
 "reload": SubResource("Animation_gatvx"),
 "shoot": SubResource("Animation_3qays")
 }
