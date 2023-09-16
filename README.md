@@ -10,4 +10,4 @@ Anyway, so this time we're doing it again, but better.
 ### I am currently using [Godot 4.1.1](https://github.com/godotengine/godot/releases/tag/4.1.1-stable) to develop this game
 
 ## Le plan
-See [PLAN.md](https://github.com/GutterCat42/blobs-with-guns-remastered/blob/main/PLAN.md)
+See [PLAN.md](https://github.com/GutterCat42/blobs-with-guns-remastered/blob/main/PLAN.md) and https://github.com/users/GutterCat42/projects/6/
