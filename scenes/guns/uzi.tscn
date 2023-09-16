@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8bdly6ykhkib"]
+
+[ext_resource type="PackedScene" uid="uid://n1eghj4te88a" path="res://scenes/guns/gun.tscn" id="1_jtlju"]
+
+[node name="Uzi" instance=ExtResource("1_jtlju")]
+inaccuracy = 10
+mag_size = 30
+ammo = 90
+rounds_per_second = 15.0
+full_auto = true
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 2

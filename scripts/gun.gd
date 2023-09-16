@@ -81,6 +81,7 @@ func create_bullet(angle: float = 0):
 func fire():
 	fired.emit(-Vector2(recoil, 0).rotated(rotation))
 	ammo_changed.emit(ammo_in_mag, ammo)
+	animation_player.stop()
 	animation_player.play("shoot")
 	
 	if shotgun:
