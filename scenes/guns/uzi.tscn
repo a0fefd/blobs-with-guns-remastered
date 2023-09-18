@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://n1eghj4te88a" path="res://scenes/guns/gun.tscn" id="1_jtlju"]
 
 [node name="Uzi" instance=ExtResource("1_jtlju")]
+recoil = 150
 inaccuracy = 10
 mag_size = 30
 ammo = 90
