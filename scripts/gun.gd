@@ -21,7 +21,7 @@ signal ammo_changed(ammo_in_mag, ammo)
 var world
 var can_shoot := true
 var reloading := false
-var ammo_in_mag: int = 0
+var ammo_in_mag := mag_size
 var facing: Vector2
 var equipped := false
 
@@ -34,7 +34,6 @@ var equipped := false
 
 func _ready():
 	shoot_timer.wait_time = 1 / rounds_per_second
-	reload()
 
 
 func _process(_delta):
@@ -58,7 +57,7 @@ func _process(_delta):
 			reload()
 
 
-func eject_shell():
+func eject_shell():   
 	var shell_inst = shell.instantiate()
 	world.add_child(shell_inst)
 	shell_inst.global_transform = shell_pos.global_transform
@@ -81,10 +80,11 @@ func create_bullet(angle: float = 0):
 
 
 func fire():
-	fired.emit(-Vector2(recoil, 0).rotated(rotation))
-	ammo_changed.emit(ammo_in_mag, ammo)
 	animation_player.stop()
 	animation_player.play("shoot")
+	
+	fired.emit(-Vector2(recoil, 0).rotated(rotation))
+	ammo_changed.emit(ammo_in_mag, ammo)
 	
 	if shotgun:
 		for i in range(num_bullets):
@@ -105,7 +105,7 @@ func reload():
 
 func equip():
 	show()
-	equipped = true
+	animation_player.play("equip")
 	ammo_changed.emit(ammo_in_mag, ammo)
 
 
@@ -131,5 +131,8 @@ func _on_animation_player_animation_finished(anim_name):
 		else:
 			ammo_in_mag = ammo
 			ammo = 0
-		
-		ammo_changed.emit(ammo_in_mag, ammo)
+	
+	elif anim_name == "equip":
+		equipped = true
+	
+	ammo_changed.emit(ammo_in_mag, ammo)
