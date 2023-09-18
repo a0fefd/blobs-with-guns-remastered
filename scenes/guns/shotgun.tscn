@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dhs8khwsd82es" path="res://scenes/guns/shotgun_bullet.tscn" id="3_55dmh"]
 
 [node name="Shotgun" instance=ExtResource("1_5qgpt")]
-recoil = 400
+recoil = 500
 shell_spin = 0.5
 inaccuracy = 1
 mag_size = 4
