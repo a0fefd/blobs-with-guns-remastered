@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcafow280u8mk"]
+
+[ext_resource type="PackedScene" uid="uid://bcs26qe4dnlv0" path="res://scenes/guns/shell.tscn" id="1_nni3h"]
+
+[node name="Shell" instance=ExtResource("1_nni3h")]
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 6

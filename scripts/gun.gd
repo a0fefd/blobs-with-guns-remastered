@@ -21,7 +21,7 @@ signal ammo_changed(ammo_in_mag, ammo)
 var world
 var can_shoot := true
 var reloading := false
-var ammo_in_mag := mag_size
+var ammo_in_mag: int
 var facing: Vector2
 var equipped := false
 
@@ -34,6 +34,7 @@ var equipped := false
 
 func _ready():
 	shoot_timer.wait_time = 1 / rounds_per_second
+	ammo_in_mag = mag_size
 
 
 func _process(_delta):

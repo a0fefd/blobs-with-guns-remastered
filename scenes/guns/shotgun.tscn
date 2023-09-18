@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://xo8do6b5yrsq"]
+
+[ext_resource type="PackedScene" uid="uid://n1eghj4te88a" path="res://scenes/guns/gun.tscn" id="1_5qgpt"]
+[ext_resource type="PackedScene" uid="uid://bcafow280u8mk" path="res://scenes/guns/shotgun_shell.tscn" id="2_2b0vc"]
+[ext_resource type="PackedScene" uid="uid://dhs8khwsd82es" path="res://scenes/guns/shotgun_bullet.tscn" id="3_55dmh"]
+
+[node name="Shotgun" instance=ExtResource("1_5qgpt")]
+recoil = 400
+shell_spin = 0.5
+inaccuracy = 1
+mag_size = 4
+ammo = 12
+eject_force = Vector2(0, -8000)
+rounds_per_second = 4.0
+shotgun = true
+num_bullets = 11
+shotgun_spread = 30.0
+shell = ExtResource("2_2b0vc")
+bullet = ExtResource("3_55dmh")
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 3
+
+[node name="BarrelEnd" parent="Sprite2D" index="0"]
+position = Vector2(6, -1)
+
+[node name="ShellPos" parent="Sprite2D" index="1"]
+position = Vector2(-1, -2)
