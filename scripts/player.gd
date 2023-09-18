@@ -4,12 +4,14 @@ extends Blob
 
 @export var gun: PackedScene = preload("res://scenes/guns/pistol.tscn")
 @export var focus_time_scale: float = 0.2
+@export var screen_shake_ratio: float = 0.02
 
 var guns := []
 var equipped_gun = null
 
 @onready var ammo_label: Label = get_node("AmmoLabel")
 @onready var world: Node2D = get_parent()
+@onready var camera: Camera2D = get_node("Camera2D")
 
 
 func _ready():
@@ -64,6 +66,7 @@ func equip_gun(index):
 
 func get_recoiled(recoil_vector):
 	apply_central_impulse(Vector2(recoil_vector.x * sprite.scale.x, recoil_vector.y).rotated(rotation))
+	camera.shake(recoil_vector.length() * screen_shake_ratio)
 
 
 func update_ammo_display(ammo_in_mag, ammo):
