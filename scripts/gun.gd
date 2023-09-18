@@ -74,9 +74,9 @@ func eject_shell():
 func create_bullet(angle: float = 0):
 	var bullet_inst = bullet.instantiate()
 	world.add_child(bullet_inst)
-	bullet_inst.global_transform = barrel_end.global_transform
 	bullet_inst.shot_from = owner
 	bullet_inst.bullet_origin = global_position
+	bullet_inst.global_transform = barrel_end.global_transform
 	bullet_inst.rotation_degrees += angle + randf_range(-inaccuracy, inaccuracy)
 
 
@@ -134,6 +134,7 @@ func _on_animation_player_animation_finished(anim_name):
 			ammo = 0
 	
 	elif anim_name == "equip":
+		animation_player.play("RESET")
 		equipped = true
 	
 	ammo_changed.emit(ammo_in_mag, ammo)
