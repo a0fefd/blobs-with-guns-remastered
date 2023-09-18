@@ -6,7 +6,7 @@ extends Line2D
 var target = null
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_instance_valid(target):
 		add_point(target.global_position)
 	else:
