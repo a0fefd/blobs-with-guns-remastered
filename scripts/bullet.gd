@@ -5,14 +5,17 @@ extends Area2D
 @export var bullet_range: int = 300
 @export var damage: float = 1
 @export var smoke_trail: PackedScene = preload("res://scenes/guns/smoke_trail.tscn")
+@export var debris_particles: PackedScene = preload("res://scenes/guns/debris_particles.tscn")
 
 var shot_from
 var bullet_origin: Vector2
 
+@onready var world = get_parent()
+
 
 func _ready():
 	var smoke_trail_inst = smoke_trail.instantiate()
-	get_parent().add_child(smoke_trail_inst)
+	world.add_child(smoke_trail_inst)
 	smoke_trail_inst.target = self
 
 
@@ -27,5 +30,9 @@ func _on_body_entered(body):
 	if body != shot_from:
 		if body.is_in_group("Hittable"):
 			body.get_hit(damage)
-	
+		
+		var debris_inst = debris_particles.instantiate()
+		world.add_child(debris_inst)
+		debris_inst.global_transform = global_transform
+		
 		queue_free()
