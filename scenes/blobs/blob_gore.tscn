@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqfw6jyyjigko"]
+
+[ext_resource type="Script" path="res://scripts/blob_gore.gd" id="1_jonja"]
+[ext_resource type="Gradient" uid="uid://dcevpox1mvlym" path="res://theme/fade_gradient.tres" id="1_u40ey"]
+
+[sub_resource type="Animation" id="Animation_ojjcv"]
+resource_name = "go"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WideSpray:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalSpray:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6ve3j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WideSpray:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalSpray:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_shsba"]
+_data = {
+"RESET": SubResource("Animation_6ve3j"),
+"go": SubResource("Animation_ojjcv")
+}
+
+[node name="BlobGore" type="Node2D"]
+script = ExtResource("1_jonja")
+
+[node name="WideSpray" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 300
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+lifetime_randomness = 0.42
+spread = 30.0
+gravity = Vector2(0, 98)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angular_velocity_min = -500.0
+angular_velocity_max = 500.0
+scale_amount_max = 5.0
+color_ramp = ExtResource("1_u40ey")
+
+[node name="DirectionalSpray" type="CPUParticles2D" parent="."]
+amount = 700
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.42
+spread = 2.0
+gravity = Vector2(0, 98)
+initial_velocity_max = 420.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+scale_amount_max = 3.0
+color_ramp = ExtResource("1_u40ey")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_shsba")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

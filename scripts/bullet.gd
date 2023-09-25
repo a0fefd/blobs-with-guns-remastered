@@ -35,7 +35,7 @@ func _process(delta):
 func _on_body_entered(body):
 	if body != shot_from:
 		if body.is_in_group("Hittable"):
-			body.get_hit(damage)
+			body.get_hit(damage, rotation)
 		
 		var debris_inst = debris_particles.instantiate()
 		world.add_child(debris_inst)

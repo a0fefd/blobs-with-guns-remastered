@@ -10,7 +10,6 @@ var guns := []
 var equipped_gun = null
 
 @onready var ammo_label: Label = get_node("AmmoLabel")
-@onready var world: Node2D = get_parent()
 @onready var camera: Camera2D = get_node("Camera2D")
 
 
