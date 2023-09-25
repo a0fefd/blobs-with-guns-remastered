@@ -5,7 +5,6 @@
 
 [sub_resource type="Animation" id="Animation_ojjcv"]
 resource_name = "go"
-length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -70,7 +69,6 @@ script = ExtResource("1_jonja")
 [node name="WideSpray" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 300
-lifetime = 3.0
 one_shot = true
 explosiveness = 0.9
 randomness = 1.0
