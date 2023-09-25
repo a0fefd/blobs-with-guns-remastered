@@ -2,16 +2,13 @@
 
 [ext_resource type="TileSet" uid="uid://4x32bkmii5mh" path="res://tiles/tiles.tres" id="1_46tp5"]
 [ext_resource type="PackedScene" uid="uid://n5o0ehci0ads" path="res://scenes/blobs/player.tscn" id="2_gugrc"]
-[ext_resource type="PackedScene" uid="uid://dhp7pmx1h136u" path="res://scenes/blobs/blob.tscn" id="2_ximy6"]
 [ext_resource type="PackedScene" uid="uid://c8bdly6ykhkib" path="res://scenes/guns/uzi.tscn" id="4_7al0c"]
 [ext_resource type="PackedScene" uid="uid://ba5gc27qsv2e0" path="res://scenes/guns/pickup.tscn" id="4_aiybn"]
 [ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="6_ngmah"]
 [ext_resource type="PackedScene" uid="uid://xo8do6b5yrsq" path="res://scenes/guns/shotgun.tscn" id="7_5qsv4"]
+[ext_resource type="PackedScene" uid="uid://ct8nn45vsgx4t" path="res://scenes/blobs/enemy.tscn" id="7_8ogag"]
 
 [node name="World" type="Node2D"]
-
-[node name="Blob" parent="." instance=ExtResource("2_ximy6")]
-position = Vector2(-73, 28)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_46tp5")
@@ -31,3 +28,9 @@ position = Vector2(-198, 48)
 item = ExtResource("7_5qsv4")
 sprite_texture = ExtResource("6_ngmah")
 sprite_index = 3
+
+[node name="Enemy" parent="." instance=ExtResource("7_8ogag")]
+position = Vector2(-121, 25)
+
+[node name="Enemy2" parent="." instance=ExtResource("7_8ogag")]
+position = Vector2(291, 45)
