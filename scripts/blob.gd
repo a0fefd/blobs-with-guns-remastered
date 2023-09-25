@@ -30,6 +30,7 @@ func get_hit(damage, direction):
 	world.add_child(gore_inst)
 	gore_inst.global_transform = global_transform
 	gore_inst.rotation = direction
+	gore_inst.modulate = sprite.modulate
 	
 	if hp < 0:
 		queue_free()

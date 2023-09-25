@@ -14,6 +14,9 @@ gun = ExtResource("3_cwe7h")
 focus_time_scale = 0.2
 screen_shake_ratio = 0.02
 
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(0, 1, 0.0470588, 1)
+
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
