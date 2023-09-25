@@ -68,31 +68,37 @@ script = ExtResource("1_jonja")
 
 [node name="WideSpray" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 300
+amount = 100
 one_shot = true
+speed_scale = 2.0
 explosiveness = 0.9
 randomness = 1.0
 lifetime_randomness = 0.42
-spread = 30.0
+spread = 50.0
 gravity = Vector2(0, 98)
-initial_velocity_min = 200.0
-initial_velocity_max = 300.0
+initial_velocity_max = 200.0
 angular_velocity_min = -500.0
 angular_velocity_max = 500.0
-scale_amount_max = 5.0
+scale_amount_min = 2.0
+scale_amount_max = 6.0
 color_ramp = ExtResource("1_u40ey")
 
 [node name="DirectionalSpray" type="CPUParticles2D" parent="."]
 amount = 700
+lifetime = 0.8
 one_shot = true
+speed_scale = 2.0
 explosiveness = 1.0
 randomness = 1.0
 lifetime_randomness = 0.42
-spread = 2.0
+spread = 3.0
 gravity = Vector2(0, 98)
-initial_velocity_max = 420.0
+initial_velocity_min = 100.0
+initial_velocity_max = 800.0
 angular_velocity_min = -200.0
 angular_velocity_max = 200.0
+damping_min = 1000.0
+damping_max = 10000.0
 scale_amount_max = 3.0
 color_ramp = ExtResource("1_u40ey")
 
