@@ -25,4 +25,8 @@ color = Color(1, 0.670588, 0.247059, 1)
 texture = ExtResource("3_88v4u")
 texture_scale = 0.03
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(50, 0)
+collision_mask = 3
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
