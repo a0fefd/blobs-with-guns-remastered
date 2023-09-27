@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci26rtl8b8bhn"]
+[gd_scene load_steps=7 format=3 uid="uid://ci26rtl8b8bhn"]
 
 [ext_resource type="Texture2D" uid="uid://dwvgyxlm2q6ut" path="res://sprites/ui/transparent_radial_menu_wedge.png" id="1_kde08"]
+[ext_resource type="Script" path="res://scripts/radial_menu_item.gd" id="1_r8fub"]
 [ext_resource type="Texture2D" uid="uid://bchc77rxhmdjx" path="res://sprites/ui/opaque_radial_menu_wedge.png" id="2_xdnc2"]
 [ext_resource type="Texture2D" uid="uid://bcqicw204lbie" path="res://sprites/ui/highlighted_radial_menu_wedge.png" id="3_fbdkh"]
 [ext_resource type="BitMap" uid="uid://caubpnkcwf246" path="res://sprites/ui/radial_menu_wedge_mask.bmp" id="4_5vrtb"]
@@ -9,6 +10,7 @@
 [node name="0" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_r8fub")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 1
@@ -18,9 +20,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -29.0
-offset_top = -68.0
+offset_top = -65.0
 offset_right = 29.0
-offset_bottom = -24.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("1_kde08")
@@ -29,7 +31,7 @@ texture_hover = ExtResource("3_fbdkh")
 texture_click_mask = ExtResource("4_5vrtb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -46)
+position = Vector2(0, -43)
 scale = Vector2(2, 2)
 texture = ExtResource("5_bpsqs")
 hframes = 3

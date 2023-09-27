@@ -8,9 +8,13 @@ extends Blob
 
 var guns := []
 var equipped_gun = null
+var inv_selection: float
+var inv_selected_gun: int
 
 @onready var ammo_label: Label = get_node("HUD/AmmoLabel")
 @onready var camera: Camera2D = get_node("Camera2D")
+@onready var radial_inventory: Control = get_node("HUD/RadialInventory")
+@onready var radial_inventory_outline: Control = get_node("HUD/RadialInventory/Circle/Outline")
 
 
 func _ready():
@@ -24,7 +28,7 @@ func _process(_delta):
 	elif sprite.scale.x != 1 and abs(rad_to_deg(get_angle_to(get_global_mouse_position()))) < 90:
 		flip()
 	
-	if Input.is_action_pressed("focus"):
+	if Input.is_action_pressed("focus") or radial_inventory.visible:
 		Engine.time_scale = focus_time_scale
 		AudioServer.playback_speed_scale = focus_time_scale
 	else:
@@ -41,26 +45,62 @@ func _process(_delta):
 			equip_gun(-1)
 		else:
 			equip_gun(guns.find(equipped_gun) - 1)
+	
+	if Input.is_action_just_pressed("inventory"):
+		radial_inventory.show()
+		equipped_gun.equipped = false
+		ammo_label.hide()
+	elif Input.is_action_just_released("inventory"):
+		radial_inventory.hide()
+		radial_inventory.scale = Vector2.ZERO
+		equipped_gun.equipped = true
+		ammo_label.show()
+	
+	if radial_inventory.visible:
+		radial_inventory.scale = lerp(radial_inventory.scale, Vector2.ONE, 0.5)
+		radial_inventory.rotation = -rotation
+		
+		if global_position.distance_to(get_global_mouse_position()) > 30:
+			inv_selection = snapped(global_position.angle_to_point(get_global_mouse_position()) + PI / 2, PI / 3)
+			radial_inventory_outline.rotation = lerp(radial_inventory_outline.rotation, inv_selection, 0.5)
+			radial_inventory_outline.scale = lerp(radial_inventory_outline.scale, Vector2.ONE, 0.5)
+		else:
+			radial_inventory_outline.scale = lerp(radial_inventory_outline.scale, Vector2.ZERO, 0.5)
+		
+		if Input.is_action_just_pressed("fire"):
+			inv_selected_gun = round(rad_to_deg(inv_selection) / 60)
+			if inv_selected_gun == -1: inv_selected_gun = 5
+			if equip_gun(inv_selected_gun): radial_inventory.hide()
 
 
 func add_gun(gun_to_add):
-	var gun_inst = gun_to_add.instantiate()
-	guns.append(gun_inst)
-	gun_pos.add_child(gun_inst)
-	gun_inst.hide()
-	gun_inst.world = world
-	gun_inst.owner = self
-	gun_inst.fired.connect(get_recoiled)
-	gun_inst.ammo_changed.connect(update_ammo_display)
-	gun_inst.unequip()
+	if guns.size() <= 6:
+		var gun_inst = gun_to_add.instantiate()
+		guns.append(gun_inst)
+		gun_pos.add_child(gun_inst)
+		gun_inst.hide()
+		gun_inst.world = world
+		gun_inst.owner = self
+		gun_inst.fired.connect(get_recoiled)
+		gun_inst.ammo_changed.connect(update_ammo_display)
+		gun_inst.unequip()
+		radial_inventory.get_node("Circle").get_node(str(guns.size() - 1)).set_icon(gun_inst.name)
+		return true
+	else:
+		return false
 
 
 func equip_gun(index):
-	if equipped_gun:
-		equipped_gun.unequip()
-	
-	equipped_gun = guns[index]
-	equipped_gun.equip()
+	if index < guns.size():
+		if equipped_gun:
+			equipped_gun.unequip()
+		
+		equipped_gun = guns[index]
+		equipped_gun.equip()
+		
+		return true
+	else:
+		return false
 
 
 func get_recoiled(recoil_vector):
