@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/blob_gore.gd" id="1_jonja"]
 [ext_resource type="Gradient" uid="uid://dcevpox1mvlym" path="res://theme/fade_gradient.tres" id="1_u40ey"]
 
-[sub_resource type="Animation" id="Animation_ojjcv"]
-resource_name = "go"
+[sub_resource type="Animation" id="Animation_6ve3j"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -30,8 +30,8 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_6ve3j"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ojjcv"]
+resource_name = "go"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,7 +42,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
