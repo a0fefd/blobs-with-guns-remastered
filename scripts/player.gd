@@ -5,6 +5,9 @@ extends Blob
 @export var gun: PackedScene = preload("res://scenes/guns/pistol.tscn")
 @export var focus_time_scale: float = 0.2
 @export var screen_shake_ratio: float = 0.02
+@export var inventory_scale_lerp: float = 0.5
+@export var inventory_mouse_threshold: int = 30
+@export var inventory_rotation_lerp: float = 0.5
 
 var guns := []
 var equipped_gun = null
@@ -57,15 +60,15 @@ func _process(_delta):
 		ammo_label.show()
 	
 	if radial_inventory.visible:
-		radial_inventory.scale = lerp(radial_inventory.scale, Vector2.ONE, 0.5)
+		radial_inventory.scale = lerp(radial_inventory.scale, Vector2.ONE, inventory_scale_lerp)
 		radial_inventory.rotation = -rotation
 		
-		if global_position.distance_to(get_global_mouse_position()) > 30:
+		if global_position.distance_to(get_global_mouse_position()) > inventory_mouse_threshold:
 			inv_selection = snapped(global_position.angle_to_point(get_global_mouse_position()) + PI / 2, PI / 3)
-			radial_inventory_outline.rotation = lerp(radial_inventory_outline.rotation, inv_selection, 0.5)
-			radial_inventory_outline.scale = lerp(radial_inventory_outline.scale, Vector2.ONE, 0.5)
+			radial_inventory_outline.rotation = lerp(radial_inventory_outline.rotation, inv_selection, inventory_rotation_lerp)
+			radial_inventory_outline.scale = lerp(radial_inventory_outline.scale, Vector2.ONE, inventory_scale_lerp)
 		else:
-			radial_inventory_outline.scale = lerp(radial_inventory_outline.scale, Vector2.ZERO, 0.5)
+			radial_inventory_outline.scale = lerp(radial_inventory_outline.scale, Vector2.ZERO, inventory_scale_lerp)
 		
 		if Input.is_action_just_pressed("fire"):
 			inv_selected_gun = round(rad_to_deg(inv_selection) / 60)

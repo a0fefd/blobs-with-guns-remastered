@@ -15,6 +15,9 @@ script = ExtResource("2_pixgc")
 gun = ExtResource("3_cwe7h")
 focus_time_scale = 0.2
 screen_shake_ratio = 0.02
+inventory_scale_lerp = 0.5
+inventory_mouse_threshold = 30
+inventory_rotation_lerp = 0.5
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(0, 1, 0.0470588, 1)
