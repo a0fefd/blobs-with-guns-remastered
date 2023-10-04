@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://caubpnkcwf246"
+path="res://.godot/imported/radial_menu_wedge_mask.bmp-50916c84afc8551758f11c8828cdf42b.res"
+
+[deps]
+
+source_file="res://sprites/ui/radial_menu_wedge_mask.bmp"
+dest_files=["res://.godot/imported/radial_menu_wedge_mask.bmp-50916c84afc8551758f11c8828cdf42b.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
