@@ -10,7 +10,7 @@ func _ready():
 	sprite.hide()
 
 
-func _process(delta):
+func _process(_delta):
 	sprite.global_rotation = 0
 
 
