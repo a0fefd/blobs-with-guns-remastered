@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbrdgykkgk1vo"]
+[gd_scene load_steps=9 format=3 uid="uid://cbrdgykkgk1vo"]
 
 [ext_resource type="TileSet" uid="uid://4x32bkmii5mh" path="res://tiles/tiles.tres" id="1_46tp5"]
 [ext_resource type="PackedScene" uid="uid://n5o0ehci0ads" path="res://scenes/blobs/player.tscn" id="2_gugrc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="6_ngmah"]
 [ext_resource type="PackedScene" uid="uid://xo8do6b5yrsq" path="res://scenes/guns/shotgun.tscn" id="7_5qsv4"]
 [ext_resource type="PackedScene" uid="uid://ct8nn45vsgx4t" path="res://scenes/blobs/enemy.tscn" id="7_8ogag"]
+[ext_resource type="Script" path="res://scripts/shell_manager.gd" id="8_rrsxm"]
 
 [node name="World" type="Node2D"]
 
@@ -34,3 +35,6 @@ position = Vector2(-121, 25)
 
 [node name="Enemy2" parent="." instance=ExtResource("7_8ogag")]
 position = Vector2(291, 45)
+
+[node name="ShellManager" type="Node2D" parent="."]
+script = ExtResource("8_rrsxm")
