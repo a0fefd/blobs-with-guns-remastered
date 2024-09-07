@@ -15,13 +15,11 @@ func _integrate_forces(_state):
 	if get_linear_velocity().length() > max_velocity:
 		set_linear_velocity(get_linear_velocity().normalized() * max_velocity)
 
-
 func flip():
 	sprite.scale.x *= -1
 	collider.scale.x *= -1
 	gun_pos.position.x *= -1
 	gun_pos.scale.x *= -1
-
 
 func get_hit(damage, direction):
 	hp -= damage
