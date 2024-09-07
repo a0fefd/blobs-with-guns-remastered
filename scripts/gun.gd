@@ -1,3 +1,4 @@
+class_name Gun
 extends Node2D
 
 
@@ -25,6 +26,8 @@ var ammo_in_mag: int
 var facing: Vector2
 var equipped := false
 
+var is_player_weapon := false 
+
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var shell_pos: Node2D = get_node("Sprite2D/ShellPos")
 @onready var barrel_end: Node2D = get_node("Sprite2D/BarrelEnd")
@@ -39,23 +42,23 @@ func _ready():
 
 func _process(_delta):
 	if equipped:
-		look_at(get_global_mouse_position())
-		
-		if full_auto:
-			if Input.is_action_pressed("fire") and can_shoot and not reloading:
+		if is_player_weapon:
+			look_at(get_global_mouse_position())
+			
+			var input_safety_check = Input.is_action_pressed("fire") if full_auto else Input.is_action_just_pressed("fire")
+			if input_safety_check and can_shoot and !reloading:
 				if ammo_in_mag > 0:
 					fire()
 				else:
 					reload()
+			
+			if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and !reloading:
+				reload()
 		else:
-			if Input.is_action_just_pressed("fire") and can_shoot and not reloading:
-				if ammo_in_mag > 0:
-					fire()
-				else:
-					reload()
-		
-		if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and not reloading:
-			reload()
+			var player_pos = world.find_child("Player").global_position
+			look_at(player_pos)
+			
+			## add sprite flip code here
 
 
 func eject_shell():   

@@ -82,6 +82,7 @@ func add_gun(gun_to_add):
 		guns.append(gun_inst)
 		gun_pos.add_child(gun_inst)
 		gun_inst.hide()
+		gun_inst.is_player_weapon = true
 		gun_inst.world = world
 		gun_inst.owner = self
 		gun_inst.fired.connect(get_recoiled)
