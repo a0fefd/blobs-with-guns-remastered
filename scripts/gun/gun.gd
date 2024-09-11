@@ -11,13 +11,13 @@ signal ammo_changed(ammo_in_mag, ammo)
 @export var mag_size: int = 10
 @export var ammo: int = 30
 @export var eject_force := Vector2(0, -10000)
-@export var rounds_per_second: float = 10
+#@export var rounds_per_second: float = 10
+@export var rpm: float = 600
 @export var full_auto := false
-@export var shotgun := false
 @export var num_bullets: int = 9  # best if this is odd so that there is a center bullet
-@export var shotgun_spread: float = 40
-@export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
-@export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
+@export var spread: float = 40
+@export var shell: PackedScene = preload("res://scenes/guns/bullets-shells/shell.tscn")
+@export var bullet: PackedScene = preload("res://scenes/guns/bullets-shells/bullet.tscn")
 
 var world
 var can_shoot := true
@@ -37,7 +37,7 @@ var is_player_weapon := false
 @onready var parent: Node2D = get_parent()
 
 func _ready():
-	shoot_timer.wait_time = 1 / rounds_per_second
+	shoot_timer.wait_time = 60 / rpm
 	ammo_in_mag = mag_size
 
 
@@ -49,7 +49,7 @@ func _process(_delta):
 			var input_safety_check = Input.is_action_pressed("fire") if full_auto else Input.is_action_just_pressed("fire")
 			if input_safety_check and can_shoot and !reloading:
 				if ammo_in_mag > 0:
-					fire()
+					fire(true if name == "Shotgun" else false)
 				else:
 					reload()
 			
@@ -85,16 +85,16 @@ func create_bullet(angle: float = 0):
 	bullet_inst.rotation_degrees += angle + randf_range(-inaccuracy, inaccuracy)
 
 
-func fire():
+func fire(is_shotgun: bool):
 	animation_player.stop()
 	animation_player.play("shoot")
 	
 	fired.emit(-Vector2(recoil, 0).rotated(rotation))
 	ammo_changed.emit(ammo_in_mag, ammo)
 	
-	if shotgun:
+	if is_shotgun:
 		for i in range(num_bullets):
-			create_bullet((shotgun_spread / (num_bullets - 1)) * i - shotgun_spread / 2)
+			create_bullet((spread / (num_bullets - 1)) * i - spread / 2)
 	else:
 		create_bullet()
 	
@@ -115,7 +115,7 @@ func equip():
 	ammo_changed.emit(ammo_in_mag, ammo)
 
 
-func unequip():
+func dequip():
 	hide()
 	equipped = false
 

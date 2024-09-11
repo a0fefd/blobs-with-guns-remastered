@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhs8khwsd82es"]
 
-[ext_resource type="PackedScene" uid="uid://c17xtf87860pg" path="res://scenes/guns/bullet.tscn" id="1_05eqa"]
+[ext_resource type="PackedScene" uid="uid://c17xtf87860pg" path="res://scenes/guns/bullets-shells/bullet.tscn" id="1_05eqa"]
 
 [node name="Bullet" instance=ExtResource("1_05eqa")]
 bullet_range = 200

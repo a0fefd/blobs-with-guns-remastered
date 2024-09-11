@@ -2,7 +2,7 @@ class_name Player
 extends Blob
 
 
-@export var gun: PackedScene = preload("res://scenes/guns/pistol.tscn")
+@export var gun: PackedScene = preload("res://scenes/guns/variants/pistol.tscn")
 @export var focus_time_scale: float = 0.2
 @export var screen_shake_ratio: float = 0.02
 @export var inventory_scale_lerp: float = 0.5
@@ -84,7 +84,7 @@ func add_gun(gun_to_add):
 		gun_inst.owner = self
 		gun_inst.fired.connect(get_recoiled)
 		gun_inst.ammo_changed.connect(update_ammo_display)
-		gun_inst.unequip()
+		gun_inst.dequip()
 		radial_inventory.get_node("Circle").get_node(str(guns.size() - 1)).set_icon(gun_inst.name)
 		return true
 	else:
@@ -94,7 +94,7 @@ func add_gun(gun_to_add):
 func equip_gun(index):
 	if index < guns.size():
 		if equipped_gun:
-			equipped_gun.unequip()
+			equipped_gun.dequip()
 		
 		equipped_gun = guns[index]
 		equipped_gun.equip()

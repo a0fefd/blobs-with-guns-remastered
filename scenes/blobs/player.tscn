@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dhp7pmx1h136u" path="res://scenes/blobs/blob.tscn" id="1_n7rfh"]
 [ext_resource type="Script" path="res://scripts/blob/player.gd" id="2_pixgc"]
-[ext_resource type="PackedScene" uid="uid://mw5josbbakqx" path="res://scenes/guns/pistol.tscn" id="3_cwe7h"]
+[ext_resource type="PackedScene" uid="uid://mw5josbbakqx" path="res://scenes/guns/variants/pistol.tscn" id="3_cwe7h"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="4_054yx"]
 [ext_resource type="Theme" uid="uid://islpgen2qypr" path="res://theme/bwg_theme.tres" id="4_aon52"]
 [ext_resource type="PackedScene" uid="uid://ci26rtl8b8bhn" path="res://scenes/blobs/radial_menu_item.tscn" id="6_7sb1y"]
