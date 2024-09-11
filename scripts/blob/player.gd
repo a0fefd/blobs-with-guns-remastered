@@ -18,9 +18,11 @@ var inv_selected_gun: int
 @onready var camera: Camera2D = get_node("Camera2D")
 @onready var radial_inventory: Control = get_node("HUD/RadialInventory")
 @onready var radial_inventory_outline: Control = get_node("HUD/RadialInventory/Circle/Outline")
-
+@onready var spawn_position := position
 
 func _ready():
+	if gun == null:
+		return
 	add_gun(gun)
 	equip_gun(0)
 
@@ -48,12 +50,14 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("inventory"):
 		radial_inventory.show()
-		equipped_gun.equipped = false
+		if equipped_gun != null:
+			equipped_gun.equipped = false
 		ammo_label.hide()
 	elif Input.is_action_just_released("inventory"):
 		radial_inventory.hide()
 		radial_inventory.scale = Vector2.ZERO
-		equipped_gun.equipped = true
+		if equipped_gun != null:
+			equipped_gun.equipped = true
 		ammo_label.show()
 	
 	if radial_inventory.visible:

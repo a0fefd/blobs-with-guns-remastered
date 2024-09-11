@@ -32,7 +32,14 @@ func get_hit(damage, direction):
 	gore_inst.modulate = sprite.modulate
 	
 	if hp < 0:
-		fake_die() if name == "Player" else die()
+		if name == "Player": 
+			fake_die()
+			set_global_position(self.spawn_position)
+			self.linear_velocity = Vector2(0, 0)
+			self.angular_velocity = 0
+			self.rotation = 0
+		else: 
+			die()
 		#die()
 
 func sprite_facing_logic(target: Vector2):
