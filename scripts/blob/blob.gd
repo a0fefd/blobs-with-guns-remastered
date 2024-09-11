@@ -3,13 +3,14 @@ extends RigidBody2D
 
 
 @export var max_velocity: int = 500
-@export var hp: float = 1
+@export var hp_max: float = 1
 @export var gore_particles: PackedScene = preload("res://scenes/blobs/blob_gore.tscn")
 
 @onready var world: Node2D = get_parent()
 @onready var gun_pos: Node2D = get_node("GunPos")
 @onready var sprite: Sprite2D = get_node("Sprite2D")
 @onready var collider: CollisionPolygon2D = get_node("CollisionPolygon2D")
+@onready var hp := hp_max
 
 func _integrate_forces(_state):
 	if get_linear_velocity().length() > max_velocity:
@@ -31,7 +32,8 @@ func get_hit(damage, direction):
 	gore_inst.modulate = sprite.modulate
 	
 	if hp < 0:
-		queue_free()
+		fake_die() if name == "Player" else die()
+		#die()
 
 func sprite_facing_logic(target: Vector2):
 	var angle_to_target: float = abs(get_angle_to(target))
@@ -42,3 +44,10 @@ func sprite_facing_logic(target: Vector2):
 	# angle is in quadrant 1
 	elif sprite.scale.x == -1 and angle_to_target < PI / 2:
 		flip()
+
+func fake_die():
+	print("died")
+	hp = hp_max
+
+func die():
+	queue_free() # change to normal death later

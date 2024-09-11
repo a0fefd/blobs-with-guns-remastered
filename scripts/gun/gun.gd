@@ -42,6 +42,7 @@ func _ready():
 
 
 func _process(_delta):
+	var shotgun_check = true if name == "Shotgun" else false
 	if equipped:
 		if is_player_weapon:
 			look_at(get_global_mouse_position())
@@ -49,18 +50,22 @@ func _process(_delta):
 			var input_safety_check = Input.is_action_pressed("fire") if full_auto else Input.is_action_just_pressed("fire")
 			if input_safety_check and can_shoot and !reloading:
 				if ammo_in_mag > 0:
-					fire(true if name == "Shotgun" else false)
+					fire(shotgun_check)
 				else:
 					reload()
 			
 			if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and !reloading:
 				reload()
 		else:
-			var player_pos = world.find_child("Player").global_position
-			look_at(player_pos)
-			
-			for enemy in enemy_list:
-				enemy.sprite_facing_logic(player_pos) if enemy != null else null
+			if owner.is_player_seen:
+				var player_pos = world.find_child("Player").global_position
+				look_at(player_pos)
+				
+				if can_shoot:
+					fire(shotgun_check)
+				
+				for enemy in enemy_list:
+					enemy.sprite_facing_logic(player_pos) if enemy != null else null
 
 
 func eject_shell():   

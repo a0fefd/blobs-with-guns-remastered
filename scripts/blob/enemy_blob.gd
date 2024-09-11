@@ -4,6 +4,8 @@ extends Blob
 
 @export var held_weapon: PackedScene = null
 
+var is_player_seen := false
+
 # variables:
 ## world
 ## gun_pos
@@ -25,3 +27,13 @@ func _ready():
 
 func _process(delta):
 	pass
+
+
+func _on_eyesight_body_entered(body):
+	if body.name == "Player":
+		is_player_seen = true
+
+
+func _on_eyesight_body_exited(body):
+	if body.name == "Player":
+		is_player_seen = false
