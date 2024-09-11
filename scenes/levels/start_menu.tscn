@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn2eyb0bih0mn"]
+
+[ext_resource type="Script" path="res://scripts/levels/start_menu.gd" id="1_vh4e2"]
+[ext_resource type="Theme" uid="uid://islpgen2qypr" path="res://theme/bwg_theme.tres" id="1_xd81h"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_vh4e2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_right = -1.0
+
+[node name="Game Title" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -142.0
+offset_top = -268.0
+offset_right = 144.0
+offset_bottom = -177.0
+theme = ExtResource("1_xd81h")
+theme_override_font_sizes/font_size = 37
+text = "Blobs with Guns
+Remastered"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -66.0
+offset_top = -24.0
+offset_right = 68.0
+offset_bottom = 26.0
+theme = ExtResource("1_xd81h")
+theme_override_font_sizes/font_size = 29
+text = "Play"
+text_overrun_behavior = 1
+clip_text = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="Control/Start Button" to="." method="_on_start_button_pressed"]

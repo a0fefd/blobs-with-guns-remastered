@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Blobs With Guns: Remastered"
-run/main_scene="res://scenes/levels/world.tscn"
+run/main_scene="res://scenes/levels/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(0.113725, 0.611765, 0.941176, 1)
 boot_splash/image="res://sprites/logos/gutter_cat_splash.png"
