@@ -28,17 +28,19 @@ var equipped := false
 
 var is_player_weapon := false 
 
+@onready var enemy_list = get_tree().get_nodes_in_group("EnemyBlobs")
+
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var shell_pos: Node2D = get_node("Sprite2D/ShellPos")
 @onready var barrel_end: Node2D = get_node("Sprite2D/BarrelEnd")
 @onready var shoot_timer: Timer = get_node("ShootTimer")
 @onready var parent: Node2D = get_parent()
 
-
 func _ready():
 	shoot_timer.wait_time = 1 / rounds_per_second
 	ammo_in_mag = mag_size
-
+	
+	print(len(enemy_list))
 
 func _process(_delta):
 	if equipped:
@@ -58,7 +60,9 @@ func _process(_delta):
 			var player_pos = world.find_child("Player").global_position
 			look_at(player_pos)
 			
-			## add sprite flip code here
+			for enemy in enemy_list:
+				enemy.sprite_facing_logic(player_pos)
+
 
 
 func eject_shell():   

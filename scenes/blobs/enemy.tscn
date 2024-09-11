@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dhp7pmx1h136u" path="res://scenes/blobs/blob.tscn" id="1_n8q45"]
 [ext_resource type="Script" path="res://scripts/enemy_blob.gd" id="2_0nah1"]
 
-[node name="Enemy" instance=ExtResource("1_n8q45")]
+[node name="Enemy" groups=["EnemyBlobs"] instance=ExtResource("1_n8q45")]
 script = ExtResource("2_0nah1")
 held_weapon = null
 

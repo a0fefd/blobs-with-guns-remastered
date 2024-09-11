@@ -32,3 +32,13 @@ func get_hit(damage, direction):
 	
 	if hp < 0:
 		queue_free()
+
+func sprite_facing_logic(target: Vector2):
+	var angle_to_target: float = abs(get_angle_to(target))
+	
+	# angle is in quadrant 2
+	if sprite.scale.x == 1 and angle_to_target > PI / 2:
+		flip()
+	# angle is in quadrant 1
+	elif sprite.scale.x == -1 and angle_to_target < PI / 2:
+		flip()

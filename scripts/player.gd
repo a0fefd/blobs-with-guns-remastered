@@ -26,10 +26,7 @@ func _ready():
 
 
 func _process(_delta):
-	if sprite.scale.x == 1 and abs(get_angle_to(get_global_mouse_position())) > PI / 2:
-		flip()
-	elif sprite.scale.x != 1 and abs(get_angle_to(get_global_mouse_position())) < PI / 2:
-		flip()
+	sprite_facing_logic(get_global_mouse_position())
 	
 	if Input.is_action_pressed("focus") or radial_inventory.visible:
 		Engine.time_scale = focus_time_scale
