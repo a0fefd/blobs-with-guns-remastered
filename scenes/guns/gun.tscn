@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://n1eghj4te88a"]
 
-[ext_resource type="Script" path="res://scripts/gun.gd" id="1_8yt1r"]
+[ext_resource type="Script" path="res://scripts/gun/gun.gd" id="1_8yt1r"]
 [ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="1_b0041"]
 [ext_resource type="Texture2D" uid="uid://da7xk67axn8fd" path="res://sprites/guns/muzzle flashes.png" id="3_6ukkm"]
 [ext_resource type="AudioStream" uid="uid://eywgm3nylp6r" path="res://sounds/shoot_sound.wav" id="3_ilwih"]

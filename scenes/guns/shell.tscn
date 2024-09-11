@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcs26qe4dnlv0"]
 
 [ext_resource type="Texture2D" uid="uid://b8js0ayt0tve6" path="res://sprites/guns/bullets.png" id="1_q4lfi"]
-[ext_resource type="Script" path="res://scripts/shell.gd" id="1_todmc"]
+[ext_resource type="Script" path="res://scripts/gun/shell.gd" id="1_todmc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2hjhl"]
 radius = 0.8
