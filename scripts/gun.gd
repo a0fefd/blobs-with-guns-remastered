@@ -39,8 +39,7 @@ var is_player_weapon := false
 func _ready():
 	shoot_timer.wait_time = 1 / rounds_per_second
 	ammo_in_mag = mag_size
-	
-	print(len(enemy_list))
+
 
 func _process(_delta):
 	if equipped:
@@ -61,8 +60,7 @@ func _process(_delta):
 			look_at(player_pos)
 			
 			for enemy in enemy_list:
-				enemy.sprite_facing_logic(player_pos)
-
+				enemy.sprite_facing_logic(player_pos) if enemy != null else null
 
 
 func eject_shell():   
