@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn2eyb0bih0mn"]
+[gd_scene load_steps=6 format=3 uid="uid://cn2eyb0bih0mn"]
 
-[ext_resource type="Script" path="res://scripts/levels/start_menu.gd" id="1_vh4e2"]
+[ext_resource type="Script" path="res://scripts/levels/menu/start_menu.gd" id="1_vh4e2"]
 [ext_resource type="Theme" uid="uid://islpgen2qypr" path="res://theme/bwg_theme.tres" id="1_xd81h"]
+[ext_resource type="PackedScene" uid="uid://mbvai0tdxbnu" path="res://scenes/levels/test1.tscn" id="2_ijqfg"]
+[ext_resource type="Script" path="res://scripts/levels/menu/level_selector.gd" id="4_avhpw"]
+[ext_resource type="PackedScene" uid="uid://cbrdgykkgk1vo" path="res://scenes/levels/world.tscn" id="5_ea7g4"]
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_vh4e2")
@@ -28,15 +31,60 @@ vertical_alignment = 1
 [node name="Start Button" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -66.0
-offset_top = -24.0
+offset_top = 36.0
 offset_right = 68.0
-offset_bottom = 26.0
+offset_bottom = 86.0
 theme = ExtResource("1_xd81h")
 theme_override_font_sizes/font_size = 29
 text = "Play"
 text_overrun_behavior = 1
 clip_text = true
 
+[node name="Level Select" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = -66.0
+offset_top = -13.0
+offset_right = 67.0
+offset_bottom = 12.0
+script = ExtResource("4_avhpw")
+level_list = {
+"test1": ExtResource("2_ijqfg"),
+"world": ExtResource("5_ea7g4")
+}
+
+[node name="Prev" type="Button" parent="Control/Level Select"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 27.0
+text = "<"
+flat = true
+clip_text = true
+
+[node name="Next" type="Button" parent="Control/Level Select"]
+layout_mode = 2
+offset_left = 113.0
+offset_top = 3.0
+offset_right = 131.0
+offset_bottom = 27.0
+text = ">"
+flat = true
+clip_text = true
+
+[node name="Level Name" type="Label" parent="Control/Level Select"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 6.0
+offset_right = 107.0
+offset_bottom = 22.0
+theme = ExtResource("1_xd81h")
+text = "PH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="pressed" from="Control/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/Level Select/Prev" to="Control/Level Select" method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/Level Select/Next" to="Control/Level Select" method="_on_next_pressed"]
