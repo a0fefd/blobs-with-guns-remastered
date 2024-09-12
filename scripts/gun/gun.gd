@@ -27,6 +27,9 @@ var facing: Vector2
 var equipped := false
 
 var is_player_weapon := false 
+var shotgun_check := false
+
+var player_pos
 
 @onready var is_suppressed = true if name == "SilencedPistol" else false
 
@@ -44,7 +47,10 @@ func _ready():
 
 
 func _process(_delta):
-	var shotgun_check = true if name == "Shotgun" else false
+	shotgun_check = true if name == "Shotgun" else false
+	
+	player_pos = world.find_child("Player").global_position
+	
 	if equipped:
 		if is_player_weapon:
 			look_at(get_global_mouse_position())
@@ -58,16 +64,7 @@ func _process(_delta):
 			
 			if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and !reloading:
 				reload()
-		else:
-			if owner.ready_to_fire:
-				var player_pos = world.find_child("Player").global_position
-				look_at(player_pos)
-				
-				if can_shoot:
-					fire(shotgun_check)
-				
-				for enemy in enemy_list:
-					enemy.sprite_facing_logic(player_pos) if enemy != null else null
+
 
 
 func eject_shell():   

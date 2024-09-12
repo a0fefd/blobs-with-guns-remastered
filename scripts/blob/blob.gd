@@ -21,6 +21,8 @@ func flip():
 	collider.scale.x *= -1
 	gun_pos.position.x *= -1
 	gun_pos.scale.x *= -1
+	if self.name.begins_with("Enemy"):
+		self.get_node("SeeingArea").scale.x *= -1
 
 func get_hit(damage, direction):
 	hp -= damage

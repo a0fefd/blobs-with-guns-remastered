@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mbvai0tdxbnu"]
+[gd_scene load_steps=10 format=3 uid="uid://mbvai0tdxbnu"]
 
 [ext_resource type="Script" path="res://scripts/levels/test1.gd" id="1_qigyh"]
 [ext_resource type="TileSet" uid="uid://4x32bkmii5mh" path="res://tiles/tiles.tres" id="1_vgw1r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://n5o0ehci0ads" path="res://scenes/blobs/player.tscn" id="2_w43ob"]
 [ext_resource type="PackedScene" uid="uid://ct8nn45vsgx4t" path="res://scenes/blobs/enemy.tscn" id="3_i84a4"]
 [ext_resource type="PackedScene" uid="uid://ba5gc27qsv2e0" path="res://scenes/guns/pickup.tscn" id="4_emd5w"]
+[ext_resource type="PackedScene" uid="uid://cqfw6jyyjigko" path="res://scenes/blobs/blob_gore.tscn" id="6_cya1b"]
 [ext_resource type="PackedScene" uid="uid://mw5josbbakqx" path="res://scenes/guns/variants/pistol.tscn" id="6_wu1vq"]
 [ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="7_smtc6"]
 
@@ -22,13 +23,21 @@ layer_0/tile_data = PackedInt32Array(65535, 0, 1, 0, 0, 1, 1, 0, 1, 65534, 0, 1,
 
 [node name="Player" parent="." instance=ExtResource("2_w43ob")]
 position = Vector2(-1, -56)
-gun = null
+gun = ExtResource("6_wu1vq")
 
 [node name="Enemy" parent="." instance=ExtResource("3_i84a4")]
 position = Vector2(767, -86)
+reaction_time = 200
+max_velocity = 500
+hp_max = 1.0
+gore_particles = ExtResource("6_cya1b")
 
 [node name="Enemy2" parent="." instance=ExtResource("3_i84a4")]
 position = Vector2(546, -51)
+reaction_time = 200
+max_velocity = 500
+hp_max = 1.0
+gore_particles = ExtResource("6_cya1b")
 
 [node name="Starting Weapon Drop" parent="." instance=ExtResource("4_emd5w")]
 position = Vector2(0, -739)
