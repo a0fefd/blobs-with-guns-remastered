@@ -9,6 +9,7 @@ radius = 75.0
 [node name="Enemy" groups=["EnemyBlobs"] instance=ExtResource("1_n8q45")]
 script = ExtResource("2_0nah1")
 held_weapon = null
+reaction_time = 200
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 0, 0, 1)
@@ -16,22 +17,27 @@ modulate = Color(1, 0, 0, 1)
 [node name="Face" parent="Sprite2D" index="0"]
 frame = 1
 
-[node name="Eyesight" type="Area2D" parent="." index="3"]
+[node name="HearingArea" type="Area2D" parent="." index="3"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Eyesight" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HearingArea" index="0"]
 shape = SubResource("CircleShape2D_gmfio")
 
-[node name="ColorRect" type="ColorRect" parent="Eyesight" index="1"]
+[node name="ColorRect" type="ColorRect" parent="HearingArea" index="1"]
 offset_left = -75.0
 offset_right = 75.0
 offset_bottom = 1.0
 color = Color(1, 0.227451, 0.0117647, 0.262745)
 
-[node name="ColorRect2" type="ColorRect" parent="Eyesight" index="2"]
+[node name="ColorRect2" type="ColorRect" parent="HearingArea" index="2"]
 offset_top = -75.0
 offset_right = 1.0
 offset_bottom = 75.0
 color = Color(1, 0.227451, 0.0117647, 0.262745)
 
-[connection signal="body_entered" from="Eyesight" to="." method="_on_eyesight_body_entered"]
-[connection signal="body_exited" from="Eyesight" to="." method="_on_eyesight_body_exited"]
+[node name="ReactionTime" type="Timer" parent="." index="4"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="HearingArea" to="." method="_on_hearing_area_body_entered"]
+[connection signal="body_exited" from="HearingArea" to="." method="_on_hearing_area_body_exited"]
+[connection signal="timeout" from="ReactionTime" to="." method="_on_reaction_time_timeout"]

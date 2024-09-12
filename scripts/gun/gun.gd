@@ -28,6 +28,8 @@ var equipped := false
 
 var is_player_weapon := false 
 
+@onready var is_suppressed = true if name == "SilencedPistol" else false
+
 @onready var enemy_list = get_tree().get_nodes_in_group("EnemyBlobs")
 
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
@@ -57,7 +59,7 @@ func _process(_delta):
 			if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and !reloading:
 				reload()
 		else:
-			if owner.is_player_seen:
+			if owner.ready_to_fire:
 				var player_pos = world.find_child("Player").global_position
 				look_at(player_pos)
 				

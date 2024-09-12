@@ -8,18 +8,19 @@ extends Control
 
 @export var selected_level: Dictionary = {
 	"index": 0,
-	"name": "test1"
+	"name": ""
 }
 
 @onready var level_instances: Dictionary = {}
 
 func _ready():
+	selected_level["name"] = level_list.keys()[ selected_level["index"] ]
 	for key in level_list.keys():
 		level_instances[key] = level_list[key].instantiate()
 	$"Level Name".text = level_instances[ selected_level["name"] ].name
 
 
-func _process(delta):
+func _process(_delta):
 	selected_level["name"] = level_list.keys()[ selected_level["index"] ]
 
 
