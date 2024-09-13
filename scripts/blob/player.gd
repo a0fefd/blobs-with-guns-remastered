@@ -2,7 +2,7 @@ class_name Player
 extends Blob
 
 
-@export var gun: PackedScene = preload("res://scenes/guns/pistol.tscn")
+@export var gun: PackedScene = preload("res://scenes/guns/variants/pistol.tscn")
 @export var focus_time_scale: float = 0.2
 @export var screen_shake_ratio: float = 0.02
 @export var inventory_scale_lerp: float = 0.5
@@ -18,18 +18,17 @@ var inv_selected_gun: int
 @onready var camera: Camera2D = get_node("Camera2D")
 @onready var radial_inventory: Control = get_node("HUD/RadialInventory")
 @onready var radial_inventory_outline: Control = get_node("HUD/RadialInventory/Circle/Outline")
-
+@onready var spawn_position := position
 
 func _ready():
+	if gun == null:
+		return
 	add_gun(gun)
 	equip_gun(0)
 
 
 func _process(_delta):
-	if sprite.scale.x == 1 and abs(get_angle_to(get_global_mouse_position())) > PI / 2:
-		flip()
-	elif sprite.scale.x != 1 and abs(get_angle_to(get_global_mouse_position())) < PI / 2:
-		flip()
+	sprite_facing_logic(get_global_mouse_position())
 	
 	if Input.is_action_pressed("focus") or radial_inventory.visible:
 		Engine.time_scale = focus_time_scale
@@ -51,12 +50,14 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("inventory"):
 		radial_inventory.show()
-		equipped_gun.equipped = false
+		if equipped_gun != null:
+			equipped_gun.equipped = false
 		ammo_label.hide()
 	elif Input.is_action_just_released("inventory"):
 		radial_inventory.hide()
 		radial_inventory.scale = Vector2.ZERO
-		equipped_gun.equipped = true
+		if equipped_gun != null:
+			equipped_gun.equipped = true
 		ammo_label.show()
 	
 	if radial_inventory.visible:
@@ -87,7 +88,7 @@ func add_gun(gun_to_add):
 		gun_inst.owner = self
 		gun_inst.fired.connect(get_recoiled)
 		gun_inst.ammo_changed.connect(update_ammo_display)
-		gun_inst.unequip()
+		gun_inst.dequip()
 		radial_inventory.get_node("Circle").get_node(str(guns.size() - 1)).set_icon(gun_inst.name)
 		return true
 	else:
@@ -97,7 +98,7 @@ func add_gun(gun_to_add):
 func equip_gun(index):
 	if index < guns.size():
 		if equipped_gun:
-			equipped_gun.unequip()
+			equipped_gun.dequip()
 		
 		equipped_gun = guns[index]
 		equipped_gun.equip()

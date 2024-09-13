@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://n1eghj4te88a"]
 
-[ext_resource type="Script" path="res://scripts/gun.gd" id="1_8yt1r"]
+[ext_resource type="Script" path="res://scripts/gun/gun.gd" id="1_8yt1r"]
 [ext_resource type="Texture2D" uid="uid://galc2r4gpkdi" path="res://sprites/guns/guns.png" id="1_b0041"]
 [ext_resource type="Texture2D" uid="uid://da7xk67axn8fd" path="res://sprites/guns/muzzle flashes.png" id="3_6ukkm"]
 [ext_resource type="AudioStream" uid="uid://eywgm3nylp6r" path="res://sounds/shoot_sound.wav" id="3_ilwih"]
@@ -178,6 +178,7 @@ position = Vector2(-1, -3)
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ilwih")
+volume_db = -25.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -187,6 +188,7 @@ libraries = {
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -11,13 +11,13 @@ signal ammo_changed(ammo_in_mag, ammo)
 @export var mag_size: int = 10
 @export var ammo: int = 30
 @export var eject_force := Vector2(0, -10000)
-@export var rounds_per_second: float = 10
+#@export var rounds_per_second: float = 10
+@export var rpm: float = 600
 @export var full_auto := false
-@export var shotgun := false
 @export var num_bullets: int = 9  # best if this is odd so that there is a center bullet
-@export var shotgun_spread: float = 40
-@export var shell: PackedScene = preload("res://scenes/guns/shell.tscn")
-@export var bullet: PackedScene = preload("res://scenes/guns/bullet.tscn")
+@export var spread: float = 40
+@export var shell: PackedScene = preload("res://scenes/guns/bullets-shells/shell.tscn")
+@export var bullet: PackedScene = preload("res://scenes/guns/bullets-shells/bullet.tscn")
 
 var world
 var can_shoot := true
@@ -27,6 +27,13 @@ var facing: Vector2
 var equipped := false
 
 var is_player_weapon := false 
+var shotgun_check := false
+
+var player_pos
+
+@onready var is_suppressed = true if name == "SilencedPistol" else false
+
+@onready var enemy_list = get_tree().get_nodes_in_group("EnemyBlobs")
 
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var shell_pos: Node2D = get_node("Sprite2D/ShellPos")
@@ -34,13 +41,16 @@ var is_player_weapon := false
 @onready var shoot_timer: Timer = get_node("ShootTimer")
 @onready var parent: Node2D = get_parent()
 
-
 func _ready():
-	shoot_timer.wait_time = 1 / rounds_per_second
+	shoot_timer.wait_time = 60 / rpm
 	ammo_in_mag = mag_size
 
 
 func _process(_delta):
+	shotgun_check = true if name == "Shotgun" else false
+	
+	player_pos = world.find_child("Player").global_position
+	
 	if equipped:
 		if is_player_weapon:
 			look_at(get_global_mouse_position())
@@ -48,17 +58,13 @@ func _process(_delta):
 			var input_safety_check = Input.is_action_pressed("fire") if full_auto else Input.is_action_just_pressed("fire")
 			if input_safety_check and can_shoot and !reloading:
 				if ammo_in_mag > 0:
-					fire()
+					fire(shotgun_check)
 				else:
 					reload()
 			
 			if Input.is_action_just_pressed("reload") and ammo_in_mag != mag_size and !reloading:
 				reload()
-		else:
-			var player_pos = world.find_child("Player").global_position
-			look_at(player_pos)
-			
-			## add sprite flip code here
+
 
 
 func eject_shell():   
@@ -83,16 +89,16 @@ func create_bullet(angle: float = 0):
 	bullet_inst.rotation_degrees += angle + randf_range(-inaccuracy, inaccuracy)
 
 
-func fire():
+func fire(is_shotgun: bool):
 	animation_player.stop()
 	animation_player.play("shoot")
 	
 	fired.emit(-Vector2(recoil, 0).rotated(rotation))
 	ammo_changed.emit(ammo_in_mag, ammo)
 	
-	if shotgun:
+	if is_shotgun:
 		for i in range(num_bullets):
-			create_bullet((shotgun_spread / (num_bullets - 1)) * i - shotgun_spread / 2)
+			create_bullet((spread / (num_bullets - 1)) * i - spread / 2)
 	else:
 		create_bullet()
 	
@@ -113,7 +119,7 @@ func equip():
 	ammo_changed.emit(ammo_in_mag, ammo)
 
 
-func unequip():
+func dequip():
 	hide()
 	equipped = false
 
