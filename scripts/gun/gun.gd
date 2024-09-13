@@ -46,7 +46,7 @@ func _ready():
 	ammo_in_mag = mag_size
 
 
-func _process(delta):
+func _process(_delta):
 	shotgun_check = true if name == "Shotgun" else false
 	
 	player_pos = world.find_child("Player").global_position

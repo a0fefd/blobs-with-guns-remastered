@@ -77,6 +77,9 @@ func _process(_delta):
 			inv_selected_gun = round(rad_to_deg(inv_selection) / 60)
 			if inv_selected_gun == -1: inv_selected_gun = 5
 			if equip_gun(inv_selected_gun): radial_inventory.hide()
+	
+	if Input.is_action_just_pressed("temp_restart"):
+		get_tree().reload_current_scene()
 
 
 func add_gun(gun_to_add):

@@ -59,7 +59,6 @@ func _process(_delta):
 				$ReactionTime.start()
 		raycast.set_target_position(player.global_position - self.global_position)
 		raycast.force_raycast_update()
-		print(raycast.get_collider().name) if raycast.is_colliding() else null
 		if raycast.is_colliding() and raycast.get_collider().name == "Player":
 			has_line_of_sight = true
 		
