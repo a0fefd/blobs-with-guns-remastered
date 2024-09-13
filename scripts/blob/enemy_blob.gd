@@ -44,6 +44,7 @@ func _ready():
 
 func _process(delta):
 	$ColorRect.set_global_position(raycast.get_target_position())
+	$ColorRect2.set_global_position(raycast.get_collision_point())
 	weapon = $GunPos.get_child(0) if $GunPos.get_child_count() > 0 else null
 	player = world.find_child("Player")
 	if !player.radial_inventory.visible:
@@ -56,7 +57,7 @@ func _process(delta):
 	if is_player_spotted:
 		if $ReactionTime.is_stopped() and !timedout:
 				$ReactionTime.start()
-		raycast.set_target_position(player.position)
+		raycast.set_target_position(player.global_position - self.global_position)
 		raycast.force_raycast_update()
 		print(raycast.get_collider().name) if raycast.is_colliding() else null
 		if raycast.is_colliding() and raycast.get_collider().name == "Player":

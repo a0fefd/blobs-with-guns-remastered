@@ -41,6 +41,11 @@ offset_right = 4.0
 offset_bottom = 4.0
 color = Color(1, 0, 0, 1)
 
+[node name="ColorRect2" type="ColorRect" parent="." index="8"]
+offset_right = 4.0
+offset_bottom = 4.0
+color = Color(0, 1, 0.0333333, 1)
+
 [connection signal="body_entered" from="HearingArea" to="." method="_on_hearing_area_body_entered"]
 [connection signal="body_exited" from="HearingArea" to="." method="_on_hearing_area_body_exited"]
 [connection signal="body_entered" from="SeeingArea" to="." method="_on_seeing_area_body_entered"]
