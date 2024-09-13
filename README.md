@@ -7,7 +7,7 @@ Anyway, so this time we're doing it again, but better.
 **This project is currently in its earliest stages and I will update this README (and everything else) once I work out what I'm doing**
 (Including some information on what the game is actually about)
 
-### I am currently using [Godot 4.1.1](https://github.com/godotengine/godot/releases/tag/4.1.1-stable) to develop this game
+### We currently using [Godot 4.2.2](https://github.com/godotengine/godot/releases/tag/4.2.2-stable) to develop this game
 
 ## Le plan
 See [PLAN.md](https://github.com/GutterCat42/blobs-with-guns-remastered/blob/main/PLAN.md) and https://github.com/users/GutterCat42/projects/6/
