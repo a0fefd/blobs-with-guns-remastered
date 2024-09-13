@@ -3,3 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://n1eghj4te88a" path="res://scenes/guns/gun.tscn" id="1_8mlyg"]
 
 [node name="Pistol" instance=ExtResource("1_8mlyg")]
+recoil = 0

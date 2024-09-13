@@ -46,7 +46,7 @@ func _ready():
 	ammo_in_mag = mag_size
 
 
-func _process(_delta):
+func _process(delta):
 	shotgun_check = true if name == "Shotgun" else false
 	
 	player_pos = world.find_child("Player").global_position
@@ -66,18 +66,15 @@ func _process(_delta):
 				reload()
 
 
-
-func eject_shell():   
+func eject_shell():
 	var shell_inst = shell.instantiate()
 	world.add_child(shell_inst)
 	shell_inst.global_transform = shell_pos.global_transform
-	
 	facing = parent.scale
-	
 	if facing.x == Vector2.RIGHT.x:
-		shell_inst.apply_force(eject_force.rotated(global_rotation), Vector2(shell_spin, 0).rotated(global_rotation))
+		shell_inst.apply_force(eject_force.rotated(global_rotation)*1/Engine.time_scale, Vector2(shell_spin, 0).rotated(global_rotation))
 	elif facing.x == Vector2.LEFT.x:
-		shell_inst.apply_force(eject_force.rotated(-global_rotation), Vector2(shell_spin, 0).rotated(-global_rotation))
+		shell_inst.apply_force(-eject_force.rotated(global_rotation)*1/Engine.time_scale, Vector2(shell_spin, 0).rotated(-global_rotation))
 
 
 func create_bullet(angle: float = 0):

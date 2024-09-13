@@ -33,9 +33,11 @@ func _process(_delta):
 	if Input.is_action_pressed("focus") or radial_inventory.visible:
 		Engine.time_scale = focus_time_scale
 		AudioServer.playback_speed_scale = focus_time_scale
+		#Engine.set_physics_ticks_per_second(60 * focus_time_scale)
 	else:
 		Engine.time_scale = 1
 		AudioServer.playback_speed_scale = 1
+		#Engine.set_physics_ticks_per_second(60)
 	
 	if Input.is_action_just_pressed("next_gun"):
 		if equipped_gun == guns[-1]:

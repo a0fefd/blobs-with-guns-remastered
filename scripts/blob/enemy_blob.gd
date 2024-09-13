@@ -33,7 +33,7 @@ func _ready():
 	
 	if (held_weapon != null):
 		# setting up the held weapon
-		var weapon = held_weapon.instantiate()
+		weapon = held_weapon.instantiate()
 		gun_pos.add_child(weapon) # put the weapon into the "hand" of the blob
 		weapon.hide()
 		weapon.world = world # make the instance actually exist in the world
@@ -42,7 +42,7 @@ func _ready():
 		weapon.equip()
 	
 
-func _process(delta):
+func _process(_delta):
 	$ColorRect.set_global_position(raycast.get_target_position())
 	$ColorRect2.set_global_position(raycast.get_collision_point())
 	weapon = $GunPos.get_child(0) if $GunPos.get_child_count() > 0 else null
