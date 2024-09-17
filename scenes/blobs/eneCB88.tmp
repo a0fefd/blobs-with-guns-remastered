@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct8nn45vsgx4t"]
+[gd_scene load_steps=4 format=3 uid="uid://ct8nn45vsgx4t"]
 
 [ext_resource type="PackedScene" uid="uid://dhp7pmx1h136u" path="res://scenes/blobs/blob.tscn" id="1_n8q45"]
 [ext_resource type="Script" path="res://scripts/blob/enemy_blob.gd" id="2_0nah1"]
-[ext_resource type="Theme" uid="uid://islpgen2qypr" path="res://theme/bwg_theme.tres" id="3_555ap"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmfio"]
 radius = 146.003
@@ -22,6 +21,7 @@ frame = 1
 [node name="HearingArea" type="Area2D" parent="." index="3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HearingArea" index="0"]
+position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_gmfio")
 
 [node name="SeeingArea" type="Area2D" parent="." index="4"]
@@ -48,20 +48,6 @@ color = Color(1, 0, 0, 1)
 offset_right = 4.0
 offset_bottom = 4.0
 color = Color(0.196078, 0, 1, 1)
-
-[node name="AttentionTimeLabel" type="Label" parent="." index="10"]
-offset_left = -10.0
-offset_top = -23.0
-offset_right = 11.0
-offset_bottom = -8.0
-theme = ExtResource("3_555ap")
-theme_override_colors/font_color = Color(1, 0.2, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
-text = "!"
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
 
 [connection signal="body_entered" from="HearingArea" to="." method="_on_hearing_area_body_entered"]
 [connection signal="body_exited" from="HearingArea" to="." method="_on_hearing_area_body_exited"]

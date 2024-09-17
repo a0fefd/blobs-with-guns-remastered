@@ -1,8 +1,7 @@
 extends Node2D
 
 
-@export var max_shells: int = 100
-
+var max_shells: int = 100
 var shells := []
 
 func _process(_delta):

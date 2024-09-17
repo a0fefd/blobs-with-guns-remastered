@@ -1,13 +1,13 @@
 extends RigidBody2D
 
 
-@onready var shell_manager: Node2D = get_parent().get_node("ShellManager")
+@onready var lag_handler: Node2D = get_parent().get_node("Player/LagHandler")
 
 
 func _ready():
-	shell_manager.shells.append(self)
+	lag_handler.shells.append(self)
 
 
 func _on_timer_timeout():
-	shell_manager.shells.erase(self)
+	lag_handler.shells.erase(self)
 	queue_free()

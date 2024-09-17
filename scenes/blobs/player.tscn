@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://n5o0ehci0ads"]
+[gd_scene load_steps=10 format=3 uid="uid://n5o0ehci0ads"]
 
 [ext_resource type="PackedScene" uid="uid://dhp7pmx1h136u" path="res://scenes/blobs/blob.tscn" id="1_n7rfh"]
 [ext_resource type="Script" path="res://scripts/blob/player.gd" id="2_pixgc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://islpgen2qypr" path="res://theme/bwg_theme.tres" id="4_aon52"]
 [ext_resource type="PackedScene" uid="uid://ci26rtl8b8bhn" path="res://scenes/blobs/radial_menu_item.tscn" id="6_7sb1y"]
 [ext_resource type="Texture2D" uid="uid://cjjbpyvv6r4vv" path="res://sprites/ui/radial_menu_wedge_outline.png" id="7_q2y01"]
+[ext_resource type="Script" path="res://scripts/lag_manager.gd" id="8_lf8vc"]
 
 [sub_resource type="PackedScene" id="PackedScene_npdh7"]
 _bundled = {
@@ -118,3 +119,6 @@ anchors_preset = 0
 [node name="Sprite2D" type="Sprite2D" parent="HUD/RadialInventory/Circle/Outline" index="0"]
 position = Vector2(0, -33.5)
 texture = ExtResource("7_q2y01")
+
+[node name="LagHandler" type="Node2D" parent="." index="5"]
+script = ExtResource("8_lf8vc")

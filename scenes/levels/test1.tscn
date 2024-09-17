@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://mbvai0tdxbnu"]
+[gd_scene load_steps=8 format=3 uid="uid://mbvai0tdxbnu"]
 
 [ext_resource type="Script" path="res://scripts/levels/test1.gd" id="1_qigyh"]
 [ext_resource type="TileSet" uid="uid://4x32bkmii5mh" path="res://tiles/tiles.tres" id="1_vgw1r"]
-[ext_resource type="Script" path="res://scripts/gun/shell_manager.gd" id="2_aj8xm"]
 [ext_resource type="PackedScene" uid="uid://n5o0ehci0ads" path="res://scenes/blobs/player.tscn" id="2_w43ob"]
 [ext_resource type="PackedScene" uid="uid://ct8nn45vsgx4t" path="res://scenes/blobs/enemy.tscn" id="3_i84a4"]
 [ext_resource type="PackedScene" uid="uid://ba5gc27qsv2e0" path="res://scenes/guns/pickup.tscn" id="4_emd5w"]
@@ -11,9 +10,6 @@
 
 [node name="Test1" type="Node2D"]
 script = ExtResource("1_qigyh")
-
-[node name="ShellManager" type="Node2D" parent="."]
-script = ExtResource("2_aj8xm")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_vgw1r")
